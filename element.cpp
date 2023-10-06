@@ -23,6 +23,19 @@ Element<T>::Element(const Element<T> &copied_element){ //destructor
 }
 
 template <class T>
-Element<T>::Element(T data,int key){ 
-    
+Element<T>::Element(T inputData,int inputKey){ 
+    prev = NULL;
+    next = NULL; 
+    key = inputKey;
+    data = inputData;
+}
+
+template <class T>
+void Element<T>::get_data() const{ 
+    return data;
+}
+
+template <class T>
+void Element<T>::get_key() const{ 
+    return key;
 }
