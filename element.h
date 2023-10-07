@@ -11,7 +11,7 @@ class Element
         {
             T item;
             Node *prev;
-            Node 	*next;
+            Node *next;
             int key;
             
         };

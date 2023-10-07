@@ -34,4 +34,5 @@ void HashTable<T>::insert(T data, int key) {
     if (hashVal > size) {
         throw std::runtime_error("Hash function output is invalid.")
     }
+    node = Element(data, key);
 }
