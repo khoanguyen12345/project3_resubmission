@@ -7,13 +7,10 @@ template <class T>
 class Element
 {
     public:
-        struct Node
-            {
-                T item;
-                Node *prev;
-                Node *next;
-                int key;
-            };
+        T data;
+        Element* prev;
+        Element* next;
+        int key;
         Element(); //constructor
         ~Element(); //destructor
         Element(const Element<T> &copied_element); //copy constructor from another element
