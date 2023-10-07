@@ -6,16 +6,14 @@ using namespace std;
 template <class T> 
 class Element
 {
-    private:
-        struct Node
-        {
-            T item;
-            Node *prev;
-            Node *next;
-            int key;
-            
-        };
     public:
+        struct Node
+            {
+                T item;
+                Node *prev;
+                Node *next;
+                int key;
+            };
         Element(); //constructor
         ~Element(); //destructor
         Element(const Element<T> &copied_element); //copy constructor from another element
