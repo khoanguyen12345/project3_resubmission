@@ -6,8 +6,7 @@ template <class T>
 class HashTable
 {
     private:
-        vector<T> heap;
-        int heap_size;   
+        int size;   
     public:
         HashTable(void); //constructor
 };
