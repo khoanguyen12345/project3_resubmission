@@ -7,10 +7,11 @@ class HashTable
 {
     private:
         T* hashtable;
-        int size;   
+        int size;
+        int h(int k);             //hash function
     public:
-        HashTable(void); //constructor
-        HashTable(int size);
+        HashTable(void);          //constructor
+        HashTable(int size);      //constructor 2
         void insert(T data, int key);
         void remove(int key);
         void member(T data, int key);
