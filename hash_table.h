@@ -10,7 +10,7 @@ class HashTable
         int size;
         int h(int k);             //hash function
     public:
-        HashTable(void);          //constructor
+        HashTable();          //constructor
         HashTable(int size);      //constructor 2
         void insert(T data, int key);
         void remove(int key);
