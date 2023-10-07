@@ -7,7 +7,7 @@ template <class T>
 class HashTable
 {
     private:
-        T* hashtable;
+        Element* hashtable;
         int size;
         int h(int k);             //hash function
     public:
