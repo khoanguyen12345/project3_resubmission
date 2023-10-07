@@ -1,5 +1,6 @@
 #include <iostream>
 #include "hash_table.h"
+#include "element.h"
 using namespace std;
 
 template <class T>
@@ -18,7 +19,7 @@ HashTable<T>::HashTable() {
 template <class T>
 HashTable<T>::HashTable(int len) {
     if (len < 0) {
-        throw std::runtime_error("Negative size for hash table not allowed")
+        throw std::runtime_error("Negative size for hash table not allowed.")
     }
     hashtable = new T[len];
     size = len;
@@ -27,4 +28,10 @@ HashTable<T>::HashTable(int len) {
 template <class T>
 void HashTable<T>::insert(T data, int key) {
     int hashVal = h(key);
+    if (hashVal < 0) {
+        throw std::runtime_error("Please choose a non-negative key!")
+    }
+    if (hashVal > size) {
+        throw std::runtime_error("Hash function output is invalid.")
+    }
 }
