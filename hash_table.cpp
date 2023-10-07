@@ -5,6 +5,8 @@ using namespace std;
 template <class T>
 int HashTable<T>::h(int k) {
     return k%size;
+    //should we check if our hash value is negative?
+    //would we throw an error or just take the mod?
 }
 
 template <class T>
@@ -20,4 +22,9 @@ HashTable<T>::HashTable(int len) {
     }
     hashtable = new T[len];
     size = len;
+}
+
+template <class T>
+void HashTable<T>::insert(T data, int key) {
+    int hashVal = h(key);
 }
