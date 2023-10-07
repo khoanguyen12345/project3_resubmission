@@ -6,6 +6,15 @@ using namespace std;
 template <class T> 
 class Element
 {
+    private:
+        struct Node
+        {
+            T item;
+            Node *prev;
+            Node 	*next;
+            int key;
+            
+        };
     public:
         Element(void); //constructor
         ~Element(void); //destructor
@@ -13,15 +22,4 @@ class Element
         Element(T inputData,int inputKey); //copy constructor by inserting in data and a key value
         void get_key () const; //returns numeric value stored inside element
         void get_data () const; //returns string data stored inside element
-
-    
-    private:
-    struct Node
-	{
-		T item;
-        Node *prev;
-		Node 	*next;
-        int key;
-        
-	};
 };  
