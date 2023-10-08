@@ -35,12 +35,7 @@ void HashTable<T>::insert(T data, int key) {
         throw std::runtime_error("Hash function output is invalid.")
     }
     Element<T> node = Element<T>(data, key);
-    if (hashTable[hashVal].empty) {
-        node.next = nullptr;
-    }
-    else {
-        node.next = hashTable[hashVal];
-    }
+    node.next = hashTable[hashVal];
     node.prev = nullptr;
     hashTable[hashVal] = node;
     size++;
@@ -59,6 +54,7 @@ bool HashTable<T>::member(T data, int key) {
 template <class T>
 string HashTable<T>::to_string() {
     for (int i = 0; i < size; i++) {
+        string out = "";
 
     }
 }
