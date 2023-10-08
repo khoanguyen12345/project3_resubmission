@@ -55,7 +55,12 @@ template <class T>
 string HashTable<T>::to_string() {
     for (int i = 0; i < size; i++) {
         string out = "";
-
+        Element<T> curr = hashTable[i];
+        while (!curr.empty) {
+            out = out + " (" + curr.get_data() + ", " + curr.get_key() + ")";
+        }
+        out = out + "\n";
+        cout << i + ":" + out;
     }
 }
 
