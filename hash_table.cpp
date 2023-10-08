@@ -54,6 +54,14 @@ bool HashTable<T>::member(T data, int key) {
     int hashVal = h(key);
     validIndex(hashVal);
     bool ret = false;
+    Element<T> curr = hashTable[i];
+    while (!curr.empty) {
+        if (curr.data = data && curr.key = key) {
+            ret = true;
+        }
+        curr = curr.next;
+    }
+    return ret;
 }
 
 template <class T>
@@ -70,6 +78,7 @@ string HashTable<T>::to_string() {
                 out += std::to_string(curr.get_data());
             }
             out += "," + std::to_string(curr.get_key()) + ")";
+            curr = curr.next;
         }
         cout << i << ":" << out << endl;
     }
