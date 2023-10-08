@@ -1,4 +1,5 @@
 #include <iostream>
+#include<typeinfo>
 #include "hash_table.h"
 #include "element.h"
 using namespace std;
@@ -57,7 +58,14 @@ string HashTable<T>::to_string() {
         string out = "";
         Element<T> curr = hashTable[i];
         while (!curr.empty) {
-            out = out + " (" + std::to_string(curr.get_data()) + ", " + curr.get_key() + ")";
+            out += " (";
+            if (typeid(T) == typeid(string)) {
+                out += curr.get_data();
+            }
+            else {
+                out += std::to_string(curr.get_data());
+            }
+            out += "," + std::to_string(curr.get_key()) + ")";
         }
         out = out + "\n";
         cout << i << ":" << out;
