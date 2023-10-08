@@ -6,10 +6,10 @@ using namespace std;
 
 template <class T>
 HashTable<T>* create_table(string fname, int m) {
-
+    return HashTable<T>()*;
 }
 
 template <class T>
 bool login(HashTable<T>* ht, T username, string password) {
-
+    return true;
 }
