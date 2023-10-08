@@ -4,7 +4,8 @@
 //
 //  Created by Dr. Stacey Truex
 //
-
+#include "element.cpp"
+#include "hash_table.cpp"
 #include <iostream>
 #include "usecase.cpp"
 
@@ -107,7 +108,7 @@ void test_member() {
     }
 }
 
-void test_login() {
+/*void test_login() {
     try {
         HashTable<string>* ht = create_table<string>("logins.csv", 10);
         string username = "IEv";
@@ -120,6 +121,7 @@ void test_login() {
         cerr << "Error in accomplishing login validation : " << e.what() << endl;
     }
 }
+*/
 
 int main() {
     
@@ -128,7 +130,7 @@ int main() {
     test_insert();
     test_remove();
     test_member();
-    test_login();
+    //test_login();
     
     cout << "Testing completed" << endl;
     

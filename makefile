@@ -1,14 +1,7 @@
-all: usecase test
+all: test
 
-test: test_minqueue.o
-	g++ -o test test_minqueue.o
+test: test_hash_table.o
+	g++ -o test test_hash_table.o
 
-test_minqueue.o: minqueue.h minqueue.cpp test_minqueue.cpp usecase.cpp
-	g++ -c test_minqueue.cpp
-
-usecase: main.o
-	g++ -o usecase main.o
-
-usecase.o: minqueue.h minqueue.cpp main.cpp usecase.cpp
-	g++ -c main.cpp
-	
+test_hash_table.o: hash_table.h hash_table.cpp  element.h element.cpp test_hash_table.cpp 
+	g++ -c test_hash_table.cpp

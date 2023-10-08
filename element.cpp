@@ -24,19 +24,20 @@ Element<T>::Element(T inputData,int inputKey) {
     data = inputData;
 }
 
-template <class T>
-void Element<T>::get_data() const { 
-    return data;
-}
-
-template <class T>
-void Element<T>::get_key() const { 
-    return key;
-}
 
 template <class T>
 Element<T>::~Element(void) { //destructor
     empty = true;
     prev = NULL;
     next = NULL; 
+}
+
+template <class T>
+T Element<T>::get_data() const { 
+    return data;
+}
+
+template <class T>
+int Element<T>::get_key() const { 
+    return key;
 }

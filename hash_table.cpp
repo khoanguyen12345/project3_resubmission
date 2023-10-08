@@ -37,7 +37,7 @@ template <class T>
 void HashTable<T>::insert(T data, int key) {
     int hashVal = h(key);
     validIndex(hashVal);
-    Element<T> node = Element<T>(data, key);
+    Element node = Element(data, key);
     node.next = hashTable[hashVal];
     node.prev = nullptr;
     hashTable[hashVal] = node;
@@ -46,7 +46,17 @@ void HashTable<T>::insert(T data, int key) {
 
 template <class T>
 void HashTable<T>::remove(int key) {
-
+    int hashVal = h(key);
+    validIndex(hashVal);
+    Element* tempNode = hashTable[hashVal];
+    while tempNode.key != key{
+        tempNode = tempNode.next;
+    }
+    Element* prevNode = tempNode.prev;
+    Element* nextNode = tempNode.next;
+    prevNode.next = tempNode.next;
+    nextNode.prev = tempNode.prev;
+    delete tempNode;
 }
 
 template <class T>
