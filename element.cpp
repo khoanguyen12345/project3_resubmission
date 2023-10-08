@@ -1,3 +1,4 @@
+#include <optional>
 #include "element.h"
 using namespace std;
 
@@ -35,7 +36,7 @@ Element<T>::~Element(void) { //destructor
 template <class T>
 T Element<T>::get_data() const { 
     if (empty == true){
-        return;
+        return T();
     }
     return data;
 }
