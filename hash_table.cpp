@@ -57,10 +57,10 @@ string HashTable<T>::to_string() {
         string out = "";
         Element<T> curr = hashTable[i];
         while (!curr.empty) {
-            out = out + " (" + curr.get_data() + ", " + curr.get_key() + ")";
+            out = out + " (" + std::to_string(curr.get_data()) + ", " + curr.get_key() + ")";
         }
         out = out + "\n";
-        cout << i + ":" + out;
+        cout << i << ":" << out;
     }
 }
 
