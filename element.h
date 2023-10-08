@@ -7,6 +7,7 @@ template <class T>
 class Element
 {
     public:
+        bool empty;
         T data;
         Element* prev;
         Element* next;

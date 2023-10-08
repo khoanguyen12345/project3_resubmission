@@ -12,7 +12,7 @@ int HashTable<T>::h(int k) {
 
 template <class T>
 HashTable<T>::HashTable() {
-    hashtable = new Element<T>[10];
+    hashTable = new Element<T>[10];
     size = 10;
 }
 
@@ -21,7 +21,7 @@ HashTable<T>::HashTable(int len) {
     if (len < 0) {
         throw std::runtime_error("Negative size for hash table not allowed.")
     }
-    hashtable = new Element<T>[len];
+    hashTable = new Element<T>[len];
     size = len;
 }
 
@@ -34,6 +34,29 @@ void HashTable<T>::insert(T data, int key) {
     if (hashVal > size) {
         throw std::runtime_error("Hash function output is invalid.")
     }
-    node = Element<T>(data, key);
-    node.
+    Element<T> node = Element<T>(data, key);
+    if (hashTable[hashVal].empty) {
+        node.next = nullptr;
+    }
+    else {
+        node.next = hashTable[hashVal];
+    }
+    node.prev = nullptr;
+    hashTable[hashVal] = node;
 }
+
+template <class T>
+void HashTable<T>::remove(int key) {
+
+}
+
+template <class T>
+bool HashTable<T>::member(T data, int key) {
+
+}
+
+template <class T>
+string HashTable<T>::to_string() {
+    
+}
+

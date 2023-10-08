@@ -3,14 +3,12 @@ using namespace std;
 
 template <class T>
 Element<T>::Element() { //constructor
-    data = NULL;
-    key = NULL;
-    prev = NULL;
-    next = NULL; 
+    empty = true;
 }
 
 template <class T>
 Element<T>::Element(const Element<T> &copied_element) { //constructor using sep. element
+    empty = copied_element.empty;
     prev = copied_element.prev;
     next = copied_element.next; 
     key = copied_element.key;
@@ -19,6 +17,7 @@ Element<T>::Element(const Element<T> &copied_element) { //constructor using sep.
 
 template <class T>
 Element<T>::Element(T inputData,int inputKey) { 
+    empty = false;
     prev = NULL;
     next = NULL; 
     key = inputKey;
@@ -37,6 +36,7 @@ void Element<T>::get_key() const {
 
 template <class T>
 Element<T>::~Element(void) { //destructor
+    empty = true;
     prev = NULL;
     next = NULL; 
 }

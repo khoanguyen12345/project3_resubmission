@@ -7,7 +7,7 @@ template <class T>
 class HashTable
 {
     private:
-        Element* hashtable;
+        Element* hashTable;
         int size;
         int h(int k);             //hash function
     public:
@@ -15,6 +15,6 @@ class HashTable
         HashTable(int len);      //constructor 2
         void insert(T data, int key);
         void remove(int key);
-        void member(T data, int key);
+        bool member(T data, int key);
         string to_string();
 };
