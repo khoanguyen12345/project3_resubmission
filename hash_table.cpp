@@ -43,6 +43,7 @@ void HashTable<T>::insert(T data, int key) {
     }
     node.prev = nullptr;
     hashTable[hashVal] = node;
+    size++
 }
 
 template <class T>
@@ -57,6 +58,8 @@ bool HashTable<T>::member(T data, int key) {
 
 template <class T>
 string HashTable<T>::to_string() {
-    
+    for (int i = 0; i < size; i++) {
+        
+    }
 }
 
