@@ -2,7 +2,7 @@
 using namespace std;
 
 template <class T>
-Element<T>::Element(void) { //constructor
+Element<T>::Element() { //constructor
     data = NULL;
     key = NULL;
     prev = NULL;
