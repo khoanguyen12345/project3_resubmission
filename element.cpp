@@ -34,10 +34,16 @@ Element<T>::~Element(void) { //destructor
 
 template <class T>
 T Element<T>::get_data() const { 
+    if (empty == true){
+        return NULL;
+    }
     return data;
 }
 
 template <class T>
 int Element<T>::get_key() const { 
+    if (empty == true){
+        return -1;
+    }
     return key;
 }
