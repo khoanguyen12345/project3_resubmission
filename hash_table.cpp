@@ -1,5 +1,6 @@
 #include <iostream>
-#include<typeinfo>
+#include <typeinfo>
+#include <sstream>
 #include "hash_table.h"
 #include "element.h"
 using namespace std;
@@ -77,21 +78,16 @@ bool HashTable<T>::member(T data, int key) {
 
 template <class T>
 string HashTable<T>::to_string() {
+    if (size == 0) return "";
+    stringstream out;
     for (int i = 0; i < size; i++) {
-        string out = "";
         Element<T> *curr = &hashTable[i];
         while (!curr->empty) {
-            out += " (";
-            if (typeid(T) == typeid(string)) {
-                out += curr->get_data();
-            }
-            else {
-                out += std::to_string(curr->get_data());
-            }
-            out += "," + std::to_string(curr->get_key()) + ")";
+            out << i << ": " << " (" << curr->get_data() << "," << curr->get_key() << ")";
             curr = curr->next;
         }
-        cout << i << ":" << out << endl;
+        out << endl;
     }
+    return out.str();
 }
 
