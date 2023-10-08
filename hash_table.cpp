@@ -67,8 +67,7 @@ string HashTable<T>::to_string() {
             }
             out += "," + std::to_string(curr.get_key()) + ")";
         }
-        out = out + "\n";
-        cout << i << ":" << out;
+        cout << i << ":" << out << endl;
     }
 }
 
