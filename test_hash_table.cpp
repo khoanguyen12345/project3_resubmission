@@ -15,6 +15,8 @@
 
 using namespace std;
 
+//this is for floating point test cases, to account for their lack of precision when making direct comparisons.
+float tolerance = 1e-6;
 
 void test_get_key() {
     try {
@@ -71,9 +73,12 @@ void test_get_data() {
         if(e_char.get_data()!='a'){cout << "Incorrect result from get data. Expected 'a' but got : " << e_char.get_data() << endl;}
 
         //float element
+        //floating points are imprecise! when we simply insert float data into an element and compare it with the float value we inserted when we return,
+        //because of very small differences between both values, we get a false positive error. because of that, we add in a tolerance value
+        //that we picked arbitrarily, and simply check if the float value returned is within the value we inserted +- the tolerance value.
+        //the tolerance value is defined at the top of our program.
         Element<float> e_float(6.6, 7);
-        cout << std::to_string(6.6 == 6.6) << " lol " << e_float.get_data() - 6.6 << endl;
-        if(e_float.get_data()!=6.6){cout << "Incorrect result from get data. Expected 6.6 but got : " << e_float.get_data() << endl;}
+        if(e_float.get_data() > (6.6 + tolerance) || e_float.get_data() < (6.6 - tolerance)){cout << "Incorrect result from get data. Expected 6.6 but got : " << e_float.get_data() << endl;}
 
     
     } catch(exception& e) {
