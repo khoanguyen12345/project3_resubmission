@@ -47,7 +47,7 @@ template <class T>
 void HashTable<T>::insert(T data, int key) {
     int hashVal = h(key);
     if (validIndex(hashVal)) {
-        Element<T> node = Element<T>(data, key);
+        Element<T> node = new Element<T>(data, key);
         node.next = hashTable[hashVal];
         node.prev = nullptr;
         hashTable[hashVal]->prev = &node;
@@ -60,12 +60,12 @@ template <class T>
 void HashTable<T>::remove(int key) {
     int hashVal = h(key);
     if (validIndex(hashVal)) {
-        Element<T> *tempNode = &hashTable[hashVal];
+        Element<T>* tempNode = hashTable[hashVal];
         while (tempNode->key != key){
             tempNode = tempNode->next;
         }
-        Element<T> *prevNode = tempNode->prev;
-        Element<T> *nextNode = tempNode->next;
+        Element<T>* prevNode = tempNode->prev;
+        Element<T>* nextNode = tempNode->next;
         prevNode->next = tempNode->next;
         nextNode->prev = tempNode->prev;
         delete tempNode;
@@ -77,7 +77,7 @@ bool HashTable<T>::member(T data, int key) {
     int hashVal = h(key);
     bool ret = false;
     if (validIndex(hashVal)) {
-        Element<T> *curr = &hashTable[hashVal];
+        Element<T>* curr = hashTable[hashVal];
         while (!curr->empty) {
             if (curr->data == data && curr->key == key) {
                 ret = true;
@@ -91,20 +91,13 @@ bool HashTable<T>::member(T data, int key) {
 
 template <class T>
 string HashTable<T>::to_string() {
-    cout << "lol" << endl;
     if (size == 0) return "";
     stringstream out;
-    cout << "lol" << endl;
     for (int i = 0; i < size; i++) {
-        cout << "1inside" << i << endl;
-        Element<T> *curr = &hashTable[i];
-        cout << "2inside" << endl;
+        Element<T>* curr = hashTable[i];
         while (!curr->empty) {
-            cout << "3inside" << endl;
             out << i << ": " << " (" << curr->get_data() << "," << curr->get_key() << ")";
-            cout << "4inside" << endl;
             curr = curr->next;
-            cout << curr->empty << " " << curr->get_data() << " " << curr->get_key() << curr->next << " help" << endl;
         }
         out << endl;
     }
