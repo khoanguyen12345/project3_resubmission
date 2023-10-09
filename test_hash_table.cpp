@@ -69,7 +69,8 @@ void test_get_data() {
 
         //float element
         Element<float> e_float(4.2, 7);
-        if(e_float.get_data()!= 4.2){cout << "Incorrect result from get data. Expected 4.2 but got : " << e_float.get_data() << endl;}
+        cout << e_float.get_data();
+        if(e_float.get_data()!=4.2){cout << "Incorrect result from get data. Expected 4.2 but got : " << e_float.get_data() << endl;}
 
     
     } catch(exception& e) {
@@ -132,6 +133,7 @@ void test_remove() {
     } catch(exception& e) {
         cerr << "Error removing member from table : " << e.what() << endl;
     }
+    cout << "done";
 }
 
 void test_member() {
