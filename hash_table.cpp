@@ -89,20 +89,35 @@ void HashTable<T>::insert(T data, int key) {
 
 template <class T>
 void HashTable<T>::remove(int key) {
+    if (size == 0){
+        return;
+    }
     int hashVal = h(key);
-    if (validIndex(hashVal)) {
+    if (validIndex(hashVal) && hashTable[hashVal]->empty != true) {
         Element<T>* tempNode = hashTable[hashVal];
         while (tempNode->key != key){
+            if (tempNode->next == nullptr){
+                return;
+            }
             tempNode = tempNode->next;
         }
-        if (tempNode->key == key) {
+        if (hashTable[hashVal] == tempNode){ //remove at the start of linked list
+            Element<T>* nextNode = tempNode->next;
+            hashTable[hashVal] = nextNode;
+            nextNode->prev = NULL;
+        }else if (tempNode->next == nullptr){ //remove at the end of linked list
+            Element<T>* prevNode = tempNode->prev;
+            prevNode->next = NULL;
+        }
+        else if (tempNode->next != NULL && tempNode->prev != NULL) { //remove at the middle of linked list
             Element<T>* prevNode = tempNode->prev;
             Element<T>* nextNode = tempNode->next;
             prevNode->next = tempNode->next;
             nextNode->prev = tempNode->prev;
-            delete tempNode;
+        } 
+        delete tempNode;
         }
-    }
+    return;
 }
 
 // ================================================
