@@ -12,8 +12,12 @@ bool HashTable<T>::validIndex(int i) {
 
 template <class T>
 int HashTable<T>::h(int k) {
-    if (size == 0) return -1;
-    return k%size;
+    if (size == 0) {
+        return -1;
+    }
+    else {
+        return k%size;
+    }
 }
 
 template <class T>
@@ -78,13 +82,20 @@ bool HashTable<T>::member(T data, int key) {
 
 template <class T>
 string HashTable<T>::to_string() {
+    cout << "lol" << endl;
     if (size == 0) return "";
     stringstream out;
+    cout << "lol" << endl;
     for (int i = 0; i < size; i++) {
+        cout << "1inside" << i << endl;
         Element<T> *curr = &hashTable[i];
+        cout << "2inside" << endl;
         while (!curr->empty) {
+            cout << "3inside" << endl;
             out << i << ": " << " (" << curr->get_data() << "," << curr->get_key() << ")";
+            cout << "4inside" << endl;
             curr = curr->next;
+            cout << curr->empty << " " << curr->get_data() << " " << curr->get_key() << " help" << endl;
         }
         out << endl;
     }
