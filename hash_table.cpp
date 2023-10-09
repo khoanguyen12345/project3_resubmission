@@ -24,6 +24,10 @@ template <class T>
 HashTable<T>::HashTable() {
     hashTable = new Element<T>[10];
     size = 10;
+    for (int i = 0; i < size; i++) {
+        Element<T>* item = new Element<T>();
+        hashTable[i] = item;
+    }
 }
 
 template <class T>
@@ -33,6 +37,10 @@ HashTable<T>::HashTable(int len) {
     }
     hashTable = new Element<T>[len];
     size = len;
+    for (int i = 0; i < size; i++) {
+        Element<T>* item = new Element<T>();
+        hashTable[i] = item;
+    }
 }
 
 template <class T>
@@ -40,9 +48,10 @@ void HashTable<T>::insert(T data, int key) {
     int hashVal = h(key);
     if (validIndex(hashVal)) {
         Element<T> node = Element<T>(data, key);
-        node.next = &hashTable[hashVal];
+        node.next = hashTable[hashVal];
         node.prev = nullptr;
-        hashTable[hashVal] = node;
+        hashTable[hashVal]->prev = &node;
+        hashTable[hashVal] = &node;
         size++;
     }
 }
@@ -95,7 +104,7 @@ string HashTable<T>::to_string() {
             out << i << ": " << " (" << curr->get_data() << "," << curr->get_key() << ")";
             cout << "4inside" << endl;
             curr = curr->next;
-            cout << curr->empty << " " << curr->get_data() << " " << curr->get_key() << " help" << endl;
+            cout << curr->empty << " " << curr->get_data() << " " << curr->get_key() << curr->next << " help" << endl;
         }
         out << endl;
     }
