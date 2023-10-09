@@ -1,4 +1,3 @@
-#pragma once
 #include <iostream>
 #include <typeinfo>
 #include <sstream>
@@ -7,17 +6,14 @@
 using namespace std;
 
 template <class T>
-void HashTable<T>::validIndex(int i) {
-    if (i < 0 || i >= size) {
-        throw std::runtime_error("Hash function output is an invalid index.");
-    }
+bool HashTable<T>::validIndex(int i) {
+    return (i >= 0 && i < size); 
 }
 
 template <class T>
 int HashTable<T>::h(int k) {
+    if (size == 0) return -1;
     return k%size;
-    //should we check if our hash value is negative?
-    //would we throw an error or just take the mod?
 }
 
 template <class T>
@@ -38,27 +34,29 @@ HashTable<T>::HashTable(int len) {
 template <class T>
 void HashTable<T>::insert(T data, int key) {
     int hashVal = h(key);
-    validIndex(hashVal);
-    Element<T> node = Element<T>(data, key);
-    node.next = &hashTable[hashVal];
-    node.prev = nullptr;
-    hashTable[hashVal] = node;
-    size++;
+    if (validIndex(hashVal)) {
+        Element<T> node = Element<T>(data, key);
+        node.next = &hashTable[hashVal];
+        node.prev = nullptr;
+        hashTable[hashVal] = node;
+        size++;
+    }
 }
 
 template <class T>
 void HashTable<T>::remove(int key) {
     int hashVal = h(key);
-    validIndex(hashVal);
-    Element<T> *tempNode = &hashTable[hashVal];
-    while (tempNode->key != key){
-        tempNode = tempNode->next;
+    if (validIndex(hashVal)) {
+        Element<T> *tempNode = &hashTable[hashVal];
+        while (tempNode->key != key){
+            tempNode = tempNode->next;
+        }
+        Element<T> *prevNode = tempNode->prev;
+        Element<T> *nextNode = tempNode->next;
+        prevNode->next = tempNode->next;
+        nextNode->prev = tempNode->prev;
+        delete tempNode;
     }
-    Element<T> *prevNode = tempNode->prev;
-    Element<T> *nextNode = tempNode->next;
-    prevNode->next = tempNode->next;
-    nextNode->prev = tempNode->prev;
-    delete tempNode;
 }
 
 template <class T>

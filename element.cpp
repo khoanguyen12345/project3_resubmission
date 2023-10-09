@@ -1,4 +1,3 @@
-#pragma once
 #include <optional>
 #include "element.h"
 using namespace std;

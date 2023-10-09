@@ -124,7 +124,6 @@ void test_member() {
 */
 
 int main() {
-    
     test_get_key();
     test_get_data();
     test_insert();
