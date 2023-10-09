@@ -1,9 +1,12 @@
-//
-//  test_hashtable_example.cpp
-//  CS 271 Hash Table Project: Example Test File
-//
-//  Created by Dr. Stacey Truex
-//
+// ================================================
+// test_hashtable_example.cpp
+// Author: Niranjan Reji, Khoa Nguyen, Phuc Nguyen
+// Date: 10-02-2023
+// Last Update: 10-09-2023
+// Test file for correctness of 
+// class template Element, HashTable, and usecase,cpp
+// ================================================
+
 #include "element.cpp"
 #include "hash_table.cpp"
 #include "usecase.cpp"
