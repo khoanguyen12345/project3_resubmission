@@ -46,12 +46,10 @@ void test_insert() {
     }
     try {
         HashTable<int> ht(5);
-        cout << "im here" << endl;
         ht.insert(10, 6);
         if(ht.to_string()!="0: \n1: (10,6) \n2: \n3: \n4: \n") {
             cout << "Incorrect result of inserting into table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht.to_string() << endl;
         }
-        cout << "im here" << endl;
         ht.insert(1, 21);
         if(ht.to_string()!="0: \n1: (1,21) (10,6) \n2: \n3: \n4: \n") {
             cout << "Incorrect result of inserting into table" << endl;

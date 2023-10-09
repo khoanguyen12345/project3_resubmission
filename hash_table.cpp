@@ -94,9 +94,9 @@ string HashTable<T>::to_string() {
     stringstream out;
     for (int i = 0; i < size; i++) {
         Element<T>* curr = hashTable[i];
-        out << i << ":";
+        out << i << ": ";
         while (!curr->empty) {
-            out << " (" << curr->get_data() << "," << curr->get_key() << ")";
+            out << "(" << curr->get_data() << "," << curr->get_key() << ") ";
             curr = curr->next;
         }
         out << endl;
