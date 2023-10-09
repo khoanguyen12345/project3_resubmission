@@ -1,3 +1,11 @@
+// ================================================
+// element.h
+// Author: Niranjan Reji, Khoa Nguyen, Phuc Nguyen
+// Date: 10-02-2023
+// Last Update: 10-09-2023
+// Header file for class template Element
+// ================================================
+
 #pragma once
 #include <iostream>
 #include <string>
@@ -13,10 +21,10 @@ class Element
         Element* prev;
         Element* next;
         int key;
-        Element(void); //constructor
-        ~Element(void); //destructor
-        Element(const Element<T> &copied_element); //copy constructor from another element
-        Element(T inputData, int inputKey); //copy constructor by inserting in data and a key value
-        int get_key() const; //returns numeric value stored inside element
-        T get_data() const; //returns data stored inside element
+        Element(void);                                      //constructor
+        ~Element(void);                                     //destructor
+        Element(const Element<T> &copied_element);          //copy constructor from another element
+        Element(T inputData, int inputKey);                 //copy constructor by inserting in data and a key value
+        int get_key() const;                                //returns numeric value stored inside element
+        T get_data() const;                                 //returns data stored inside element
 };  

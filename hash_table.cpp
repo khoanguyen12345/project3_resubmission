@@ -1,3 +1,11 @@
+// ================================================
+// hash_table.cpp
+// Author: Niranjan Reji, Khoa Nguyen, Phuc Nguyen
+// Date: 10-02-2023
+// Last Update: 10-09-2023
+// Implementation file of class template Hashtable
+// ================================================
+
 #include <iostream>
 #include <typeinfo>
 #include <sstream>
@@ -5,10 +13,18 @@
 #include "element.h"
 using namespace std;
 
+// ================================================
+// validIndex
+// ================================================
+
 template <class T>
 bool HashTable<T>::validIndex(int i) {
     return (i >= 0 && i < size); 
 }
+
+// ================================================
+// h
+// ================================================
 
 template <class T>
 int HashTable<T>::h(int k) {
@@ -20,6 +36,10 @@ int HashTable<T>::h(int k) {
     }
 }
 
+// ================================================
+// HashTable
+// ================================================
+
 template <class T>
 HashTable<T>::HashTable() {
     hashTable = new Element<T>*[10];
@@ -29,6 +49,10 @@ HashTable<T>::HashTable() {
         hashTable[i] = item;
     }
 }
+
+// ================================================
+// HashTable
+// ================================================
 
 template <class T>
 HashTable<T>::HashTable(int len) {
@@ -43,6 +67,10 @@ HashTable<T>::HashTable(int len) {
     }
 }
 
+// ================================================
+// insert
+// ================================================
+
 template <class T>
 void HashTable<T>::insert(T data, int key) {
     int hashVal = h(key);
@@ -54,6 +82,10 @@ void HashTable<T>::insert(T data, int key) {
         hashTable[hashVal] = node;
     }
 }
+
+// ================================================
+// remove
+// ================================================
 
 template <class T>
 void HashTable<T>::remove(int key) {
@@ -88,6 +120,10 @@ void HashTable<T>::remove(int key) {
     return;
 }
 
+// ================================================
+// member
+// ================================================
+
 template <class T>
 bool HashTable<T>::member(T data, int key) {
     int hashVal = h(key);
@@ -104,6 +140,10 @@ bool HashTable<T>::member(T data, int key) {
     }
     return ret;
 }
+
+// ================================================
+// to_string
+// ================================================
 
 template <class T>
 string HashTable<T>::to_string() {
