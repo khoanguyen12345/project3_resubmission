@@ -76,7 +76,7 @@ void test_get_data() {
         //floating points are imprecise! when we simply insert float data into an element and compare it with the float value we inserted when we return,
         //because of very small differences between both values, we get a false positive error. because of that, we add in a tolerance value
         //that we picked arbitrarily, and simply check if the float value returned is within the value we inserted +- the tolerance value.
-        //the tolerance value is defined at the top of our program.
+        //the tolerance value is defined at the top of our program. We chose it arbitrarily.
         Element<float> e_float(6.6, 7);
         if(e_float.get_data() > (6.6 + tolerance) || e_float.get_data() < (6.6 - tolerance)){cout << "Incorrect result from get data. Expected 6.6 but got : " << e_float.get_data() << endl;}
 
