@@ -13,6 +13,9 @@ using namespace std;
 
 // ================================================
 // Element
+// Initialize an empty element
+// Precondition: None
+// Postcondition: None
 // ================================================
 
 template <class T>
@@ -22,6 +25,10 @@ Element<T>::Element(void) {                                 //constructor
 
 // ================================================
 // Element
+// Create an element and copy the data and
+// key value from inputted element
+// Precondition: 
+// Postcondition:
 // ================================================
 
 
@@ -36,6 +43,9 @@ Element<T>::Element(const Element<T> &copied_element) {     //constructor using 
 
 // ================================================
 // Element
+// Create an element containing the inputted data and key value
+// Precondition:
+// Postcondition:
 // ================================================
 
 template <class T>
@@ -49,6 +59,8 @@ Element<T>::Element(T inputData,int inputKey) {
 
 // ================================================
 // ~Element
+// Precondition:
+// Postcondition:
 // ================================================
 
 template <class T>
@@ -59,6 +71,9 @@ Element<T>::~Element(void) {                                 //destructor
 
 // ================================================
 // get_data
+// Retrieve the data stored in the element
+// Precondition: Element is empty or Element contains data and its key value
+// Postcondition: Return the element's numeric key value
 // ================================================
 
 template <class T>
@@ -71,6 +86,9 @@ T Element<T>::get_data() const {
 
 // ================================================
 // get_key
+// Retrieve the key value of the element
+// Precondition: Element is empty or Element contains data and its key value
+// Post Condition: Return the element's template data 
 // ================================================
 
 template <class T>

@@ -101,15 +101,15 @@ void HashTable<T>::remove(int key) {
             }
             tempNode = tempNode->next;
         }
-        if (hashTable[hashVal] == tempNode){ //remove at the start of linked list
+        if (hashTable[hashVal] == tempNode){                            //remove at the start of linked list
             Element<T>* nextNode = tempNode->next;
             hashTable[hashVal] = nextNode;
             nextNode->prev = NULL;
-        }else if (tempNode->next == nullptr){ //remove at the end of linked list
+        }else if (tempNode->next == nullptr){                           //remove at the end of linked list
             Element<T>* prevNode = tempNode->prev;
             prevNode->next = NULL;
         }
-        else if (tempNode->next != NULL && tempNode->prev != NULL) { //remove at the middle of linked list
+        else if (tempNode->next != NULL && tempNode->prev != NULL) {    //remove at the middle of linked list
             Element<T>* prevNode = tempNode->prev;
             Element<T>* nextNode = tempNode->next;
             prevNode->next = tempNode->next;
