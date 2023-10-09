@@ -63,11 +63,13 @@ void HashTable<T>::remove(int key) {
         while (tempNode->key != key){
             tempNode = tempNode->next;
         }
-        Element<T>* prevNode = tempNode->prev;
-        Element<T>* nextNode = tempNode->next;
-        prevNode->next = tempNode->next;
-        nextNode->prev = tempNode->prev;
-        delete tempNode;
+        if (tempNode->key == key) {
+            Element<T>* prevNode = tempNode->prev;
+            Element<T>* nextNode = tempNode->next;
+            prevNode->next = tempNode->next;
+            nextNode->prev = tempNode->prev;
+            delete tempNode;
+        }
     }
 }
 
