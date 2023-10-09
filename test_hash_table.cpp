@@ -49,7 +49,7 @@ void test_get_data() {
     try {
          //empty element
         Element<int> e;
-        if(e.get_data()!=0){cout << "Incorrect result from get data. Expected -1 but got : " << e.get_data() << endl;}
+        if(e.get_data()!=0){cout << "Incorrect result from get data. Expected 0 but got : " << e.get_data() << endl;}
         
         //int element
         Element<int> e_int(10, 6);
