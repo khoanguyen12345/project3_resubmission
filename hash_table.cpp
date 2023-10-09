@@ -62,15 +62,16 @@ void HashTable<T>::remove(int key) {
 template <class T>
 bool HashTable<T>::member(T data, int key) {
     int hashVal = h(key);
-    validIndex(hashVal);
     bool ret = false;
-    Element<T> *curr = &hashTable[hashVal];
-    while (!curr->empty) {
-        if (curr->data == data && curr->key == key) {
-            ret = true;
-            break;
+    if (validIndex(hashVal)) {
+        Element<T> *curr = &hashTable[hashVal];
+        while (!curr->empty) {
+            if (curr->data == data && curr->key == key) {
+                ret = true;
+                break;
+            }
+            curr = curr->next;
         }
-        curr = curr->next;
     }
     return ret;
 }
