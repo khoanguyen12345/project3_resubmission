@@ -133,7 +133,6 @@ void test_remove() {
     } catch(exception& e) {
         cerr << "Error removing member from table : " << e.what() << endl;
     }
-    cout << "done";
 }
 
 void test_member() {
