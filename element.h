@@ -13,8 +13,8 @@ class Element
         Element* prev;
         Element* next;
         int key;
-        Element(); //constructor
-        ~Element(); //destructor
+        Element(void); //constructor
+        ~Element(void); //destructor
         Element(const Element<T> &copied_element); //copy constructor from another element
         Element(T inputData, int inputKey); //copy constructor by inserting in data and a key value
         int get_key() const; //returns numeric value stored inside element

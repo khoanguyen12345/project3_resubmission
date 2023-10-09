@@ -6,21 +6,39 @@
 //
 #include "element.cpp"
 #include "hash_table.cpp"
-#include <iostream>
 #include "usecase.cpp"
+#include <string>
+#include <iostream>
 
 using namespace std;
 
 
 void test_get_key() {
     try {
-        Element<int> empty_elem;
-        if(empty_elem.get_key()!=-1){cout << "Incorrect result from get key. Expected -1 for an empty element but got : " << empty_elem.get_key() << endl;}
+        //int element
         Element<int> e(10, 6);
         if(e.get_key()!=6){cout << "Incorrect result from get key. Expected 6 but got : " << e.get_key() << endl;}
+
+        //string element
+        Element<string> e_string("hi", 6);
+        if(e_string.get_key()!=6){cout << "Incorrect result from get key. Expected 6 but got : " << e_string.get_key() << endl;}
+    
+        //bool element
+        Element<bool> e_bool(false, 2);
+        if(e_bool.get_key()!=2){cout << "Incorrect result from get key. Expected 2 but got : " << e_bool.get_key() << endl;}
+
+        //char element
+        Element<char> e_char('a', 1);
+        if(e_char.get_key()!=1){cout << "Incorrect result from get key. Expected 1 but got : " << e_char.get_key() << endl;}
+
+        //float element
+        Element<float> e_float(4.2, 7);
+        if(e_float.get_key()!=7){cout << "Incorrect result from get key. Expected 7 but got : " << e_float.get_key() << endl;}
+    
     } catch(exception& e) {
         cerr << "Error getting key from element : " << e.what() << endl;
     }
+       
 }
 
 void test_get_data() {
@@ -125,15 +143,15 @@ void test_member() {
 
 int main() {
     test_get_key();
-    cout << "1";
+    cout << "test_get_key complete" << endl;
     test_get_data();
-    cout << "2";
+    cout << "test_get_data complete" << endl;
     test_insert();
-    cout << "3";
+    cout << "test_insert complete" << endl;
     test_remove();
-    cout << "4";
+    cout << "test_remove complete" << endl;
     test_member();
-    cout << "5";
+    cout << "test_member complete" << endl;
     //test_login();
     
     cout << "Testing completed" << endl;

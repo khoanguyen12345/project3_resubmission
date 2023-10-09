@@ -3,7 +3,7 @@
 using namespace std;
 
 template <class T>
-Element<T>::Element() { //constructor
+Element<T>::Element(void) { //constructor
     empty = true;
 }
 
@@ -16,6 +16,7 @@ Element<T>::Element(const Element<T> &copied_element) { //constructor using sep.
     data = copied_element.data;
 }
 
+
 template <class T>
 Element<T>::Element(T inputData,int inputKey) { 
     empty = false;
@@ -25,10 +26,8 @@ Element<T>::Element(T inputData,int inputKey) {
     data = inputData;
 }
 
-
 template <class T>
 Element<T>::~Element(void) { //destructor
-    empty = true;
     prev = NULL;
     next = NULL; 
 }
@@ -36,7 +35,7 @@ Element<T>::~Element(void) { //destructor
 template <class T>
 T Element<T>::get_data() const { 
     if (empty == true){
-        return T();
+        return 0;
     }
     return data;
 }
