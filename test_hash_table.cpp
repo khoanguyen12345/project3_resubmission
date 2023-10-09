@@ -68,9 +68,8 @@ void test_get_data() {
         if(e_char.get_data()!='a'){cout << "Incorrect result from get data. Expected 'a' but got : " << e_char.get_data() << endl;}
 
         //float element
-        Element<float> e_float(4.2, 7);
-        cout << e_float.get_data();
-        if(e_float.get_data()!=4.2){cout << "Incorrect result from get data. Expected 4.2 but got : " << e_float.get_data() << endl;}
+        Element<float> e_float(4.3, 7);
+        if(e_float.get_data()!=4.3){cout << "Incorrect result from get data. Expected 4.2 but got : " << e_float.get_data() << endl;}
 
     
     } catch(exception& e) {
