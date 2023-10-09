@@ -15,9 +15,13 @@ using namespace std;
 
 void test_get_key() {
     try {
+        //empty element
+        Element<int> e;
+        if(e.get_key()!=-1){cout << "Incorrect result from get key. Expected -1 but got : " << e.get_key() << endl;}
+
         //int element
-        Element<int> e(10, 6);
-        if(e.get_key()!=6){cout << "Incorrect result from get key. Expected 6 but got : " << e.get_key() << endl;}
+        Element<int> e_int(10, 6);
+         if(e_int.get_key()!=6){cout << "Incorrect result from get key. Expected 6 but got : " << e_int.get_key() << endl;}
 
         //string element
         Element<string> e_string("hi", 6);
@@ -43,10 +47,31 @@ void test_get_key() {
 
 void test_get_data() {
     try {
-        Element<int> empty_elem;
-        if(empty_elem.get_data()!=0){cout << "Incorrect result from get data. Expected 0 for an empty element but got : " << empty_elem.get_data() << endl;}
-        Element<int> e(10, 6);
-        if(e.get_data()!=10){cout << "Incorrect result from get data. Expected 10 but got : " << e.get_data() << endl;}
+         //empty element
+        Element<int> e;
+        if(e.get_data()!=NULL){cout << "Incorrect result from get key. Expected -1 but got : " << e.get_data() << endl;}
+        
+        //int element
+        Element<int> e_int(10, 6);
+        if(e_int.get_data()!=10){cout << "Incorrect result from get data. Expected 10 but got : " << e_int.get_data() << endl;}
+
+        //string element
+        Element<string> e_string("hi", 6);
+        if(e_string.get_data()!="hi"){cout << "Incorrect result from get data. Expected 'hi' but got : " << e_string.get_data() << endl;}
+    
+        //bool element
+        Element<bool> e_bool(false, 2);
+        if(e_bool.get_data()!=false){cout << "Incorrect result from get data. Expected false but got : " << e_bool.get_data() << endl;}
+
+        //char element
+        Element<char> e_char('a', 1);
+        if(e_char.get_data()!='a'){cout << "Incorrect result from get data. Expected 'a' but got : " << e_char.get_data() << endl;}
+
+        //float element
+        Element<float> e_float(4.2, 7);
+        if(e_float.get_data()!= 4.2){cout << "Incorrect result from get data. Expected 4.2 but got : " << e_float.get_data() << endl;}
+
+    
     } catch(exception& e) {
         cerr << "Error getting data from element : " << e.what() << endl;
     }
