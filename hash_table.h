@@ -16,8 +16,7 @@ class HashTable
 {
     private:
         Element<T>** hashTable;
-        int size;
-        int h(int k);                   //hash function
+        int size;                 
     public:
         HashTable();                    //constructor
         HashTable(int len);             //constructor 2
@@ -25,5 +24,6 @@ class HashTable
         void remove(int key);
         bool validIndex(int i);
         bool member(T data, int key);
+        int h(int k);                   //hash function
         string to_string();
 };
