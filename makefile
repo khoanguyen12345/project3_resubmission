@@ -12,5 +12,8 @@ hash_table.o: hash_table.cpp hash_table.h
 element.o: element.cpp element.h
 	g++ -c $<
 
+usecase.o: usecase.cpp
+	g++ -c $<
+
 clean:
 	rm -f *.o test
