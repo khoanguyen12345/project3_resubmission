@@ -2,7 +2,7 @@
 // hash_table.cpp
 // Author: Niranjan Reji, Khoa Nguyen, Phuc Nguyen
 // Date: 10-02-2023
-// Last Update: 10-09-2023
+// Last Update: 10-10-2023
 // Implementation file of class template Hashtable
 // ================================================
 
@@ -68,13 +68,13 @@ HashTable<T>::HashTable(int len) {
 
 template <class T>
 void HashTable<T>::insert(T data, int key) {
-    int hashVal = h(key);
-    if (validIndex(hashVal)) {
-        Element<T>* node = new Element<T>(data, key);
-        node->next = hashTable[hashVal];
-        node->prev = nullptr;
-        hashTable[hashVal]->prev = node;
-        hashTable[hashVal] = node;
+    int hashVal = h(key);                               //get hash value of key 'key'   
+    if (validIndex(hashVal)) {                          //check if the key is valid or not, if not then do nothing, else proceed
+        Element<T>* node = new Element<T>(data, key);   //pointer points to a new element containing inputted data and key value
+        node->next = hashTable[hashVal];                //add the new element to the start of the linked list, connect with the previous first element
+        node->prev = nullptr;                           //set new element's previous pointer to nil
+        hashTable[hashVal]->prev = node;                //previous first element's prev pointer points to newly inserted element
+        hashTable[hashVal] = node;                      //set the hash table's index at hashVal to point to the new element
     }
 }
 
@@ -170,19 +170,20 @@ bool HashTable<T>::member(T data, int key) {
 
 // ================================================
 // h
-// Pre-condition:
-// Post-condition:
-// Parameter:
-// Return:
+// Set hash value of key k
+// Pre-condition: Exist a hash table with key at index k
+// Post-condition: Return the hash value of key k
+// Parameter: int k - a key value
+// Return: Return the hash value of key k
 // ================================================
 
 template <class T>
 int HashTable<T>::h(int k) {
-    if (size == 0) {
-        return -1;
+    if (size == 0) {                                //check if hash table is empty
+        return -1;                                  //if empty then return -1
     }
     else {
-        return k%size;
+        return k%size;                              //return hash value of key k
     }
 }
 
@@ -201,17 +202,17 @@ int HashTable<T>::h(int k) {
 
 template <class T>
 string HashTable<T>::to_string() {
-    if (size == 0) return "";
-    stringstream out;
-    for (int i = 0; i < size; i++) {
-        Element<T>* curr = hashTable[i];
-        out << i << ": ";
-        while (!curr->empty) {
-            out << "(" << curr->get_data() << "," << curr->get_key() << ") ";
-            curr = curr->next;
+    if (size == 0) return "";                                                   //check if hash table if empty, if empty then return an empty string
+    stringstream out;                                                           //a stringstream object to temporarily hold element's data and key value
+    for (int i = 0; i < size; i++) {                                            //for loop to go through elements in the hash table
+        Element<T>* curr = hashTable[i];                                        //pointer points to element at key i
+        out << i << ": ";                                                       //assign the pointer the stringstream object
+        while (!curr->empty) {                                                  //while loop to traverse through the linked list at current key
+            out << "(" << curr->get_data() << "," << curr->get_key() << ") ";   //retrieve the elements' data and key value
+            curr = curr->next;                                                  //go to next element
         }
         out << endl;
     }
-    return out.str();
+    return out.str();                                                           //convert the stringstream into string
 }
 
