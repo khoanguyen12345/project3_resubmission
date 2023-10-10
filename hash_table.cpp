@@ -17,7 +17,7 @@ using namespace std;
 // HashTable
 // Create an instance of class HashTable
 // Pre-condition: None
-// Post-condiiton: A new hash table
+// Post-condition: A new hash table
 // Parameter: None
 // Return: None
 // ================================================
@@ -36,7 +36,7 @@ HashTable<T>::HashTable() {
 // HashTable
 // Create an instance of class HashTable with 'len' slots
 // Pre-condition: None
-// Post-condiiton: A new hash table with 'len' slots
+// Post-condition: A new hash table with 'len' slots
 // Parameter: len - number of slots that the hash table will have
 // Return: None
 // ================================================
@@ -56,10 +56,14 @@ HashTable<T>::HashTable(int len) {
 
 // ================================================
 // insert
-// Pre-condition:
-// Post-condiiton:
-// Parameter:
-// Return:
+// Insert an element into the Hash Table
+// Pre-condition: Exists a HashTable; 
+//                element must have key that is in range 
+//                of the Hash Table
+// Post-condition: HashTable contains the new element
+// Parameter: T data - the data of element to be inserted
+//            int key - the key value of element to be inserted
+// Return: None
 // ================================================
 
 template <class T>
@@ -76,10 +80,14 @@ void HashTable<T>::insert(T data, int key) {
 
 // ================================================
 // remove
-// Pre-condition:
-// Post-condiiton:
-// Parameter:
-// Return:
+// Remove an element from HashTable
+// Pre-condition: Exists a HashTable;
+//                Exists the element at inputted key value
+// Post-condiiton: HashTable no longer has the element
+//                 at the inputted key value
+// Parameter: int key - key value of the element
+//                      to be removed
+// Return: None
 // ================================================
 
 template <class T>
@@ -117,8 +125,9 @@ void HashTable<T>::remove(int key) {
 
 // ================================================
 // validIndex
+// Check if a hash table contains the inputted index value
 // Pre-condition: Exists a hash table
-// Post-condiiton: Return the index
+// Post-condition: Return the index
 // Parameter: int i - the index to be check if 
 //                    it is in the hash table
 // Return: the index if it is in the hash table
@@ -126,15 +135,20 @@ void HashTable<T>::remove(int key) {
 
 template <class T>
 bool HashTable<T>::validIndex(int i) {
-    return (i >= 0 && i < size);                    //if i is larger thab 0 and smaller than array's size, then return i
+    return (i >= 0 && i < size);                    //if i is larger than 0 and smaller than array's size, then return i
 }
 
 // ================================================
 // member
-// Pre-condition:
-// Post-condiiton:
-// Parameter:
-// Return:
+// Check if an element is in the hash table
+// Pre-condition: Exists a hash table
+// Post-condition: Return true if element to be
+//                 check is in the hash table
+//                 Else return false
+// Parameter: T data - targeted element's data
+//            int key - targeted element's key value
+// Return: true if targeted element is in
+//         the hash table, false otherwise
 // ================================================
 
 template <class T>
@@ -157,7 +171,7 @@ bool HashTable<T>::member(T data, int key) {
 // ================================================
 // h
 // Pre-condition:
-// Post-condiiton:
+// Post-condition:
 // Parameter:
 // Return:
 // ================================================
@@ -174,10 +188,15 @@ int HashTable<T>::h(int k) {
 
 // ================================================
 // to_string
-// Pre-condition:
-// Post-condiiton:
-// Parameter:
-// Return:
+// Convert data and key value of elements in the
+// hash table into string
+// Pre-condition: Exists the hash table;
+// Post-condition: a string containing data and
+//                 key value of all elements in 
+//                 the hash table
+// Parameter: None
+// Return: the string a string containing data and
+//         key value of all elements in the hash table
 // ================================================
 
 template <class T>

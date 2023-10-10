@@ -4,7 +4,7 @@
 // Date: 10-02-2023
 // Last Update: 10-09-2023
 // Test file for correctness of 
-// class template Element, HashTable, and usecase,cpp
+// class template Element, HashTable, and usecase.cpp
 // ================================================
 
 #include "element.cpp"
