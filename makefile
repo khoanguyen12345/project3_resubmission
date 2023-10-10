@@ -1,7 +1,13 @@
-all: test
+all: test usecase
 
-test: test_hash_table.o hash_table.o element.o usecase.o
+test: test_hash_table.o hash_table.o element.o
 	g++ -o test $^
+
+usecase: main.o usecase.o hash_table.o element.o
+	g++ -o usecase $^
+
+main.o: main.cpp usecase.cpp hash_table.h element.h
+	g++ -c $<
 
 test_hash_table.o: test_hash_table.cpp hash_table.h element.h
 	g++ -c $<
