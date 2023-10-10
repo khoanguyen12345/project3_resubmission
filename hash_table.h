@@ -18,12 +18,12 @@ class HashTable
         Element<T>** hashTable;
         int size;                 
     public:
-        HashTable();                    //constructor
-        HashTable(int len);             //constructor 2
-        void insert(T data, int key);   //
-        void remove(int key);
-        bool validIndex(int i);
-        bool member(T data, int key);
-        int h(int k);                   //hash function
-        string to_string();
+        HashTable();                                //default constructor
+        HashTable(int len);                         //constructor initialize hash table with 'len' slots
+        void insert(T data, int key);               //insert element
+        void remove(int key);                       //remove element
+        bool validIndex(int i);                     //check if index is within the hash table
+        bool member(T data, int key);               //check if element is in the hash table
+        int h(int k);                               //hash function
+        string to_string();                         //convert data into string
 };

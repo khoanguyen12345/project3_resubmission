@@ -24,7 +24,7 @@ class Element
         Element(void);                                      //constructor
         ~Element(void);                                     //destructor
         Element(const Element<T> &copied_element);          //copy constructor from another element
-        Element(T inputData, int inputKey);                 //copy constructor by inserting in data and a key value
+        Element(T inputData, int inputKey);                 //constructor with data and a key value
         int get_key() const;                                //get numeric value stored inside element
         T get_data() const;                                 //get data stored inside element
 };  

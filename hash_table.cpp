@@ -14,61 +14,52 @@
 using namespace std;
 
 // ================================================
-// validIndex
-// ================================================
-
-template <class T>
-bool HashTable<T>::validIndex(int i) {
-    return (i >= 0 && i < size); 
-}
-
-// ================================================
-// h
-// ================================================
-
-template <class T>
-int HashTable<T>::h(int k) {
-    if (size == 0) {
-        return -1;
-    }
-    else {
-        return k%size;
-    }
-}
-
-// ================================================
 // HashTable
+// Create an instance of class HashTable
+// Pre-condition: None
+// Post-condiiton: A new hash table
+// Parameter: None
+// Return: None
 // ================================================
 
 template <class T>
 HashTable<T>::HashTable() {
-    hashTable = new Element<T>*[10];
-    size = 10;
+    hashTable = new Element<T>*[10];                   //initialize an array of pointers of class template Element
+    size = 10;                                         //set the size of the array
     for (int i = 0; i < size; i++) {
-        Element<T>* item = new Element<T>();
-        hashTable[i] = item;
+        Element<T>* item = new Element<T>();           //initialize an element of class template Element
+        hashTable[i] = item;                           //pointer at index i points to the newly initilized element
     }
 }
 
 // ================================================
 // HashTable
+// Create an instance of class HashTable with 'len' slots
+// Pre-condition: None
+// Post-condiiton: A new hash table with 'len' slots
+// Parameter: len - number of slots that the hash table will have
+// Return: None
 // ================================================
 
 template <class T>
 HashTable<T>::HashTable(int len) {
-    if (len < 0) {
-        throw std::runtime_error("Negative size for hash table not allowed.");
+    if (len < 0) {                                                              //check if len is valid
+        throw std::runtime_error("Negative size for hash table not allowed.");  //if len is not valid then throw error
     }
-    hashTable = new Element<T>*[len];
-    size = len;
+    hashTable = new Element<T>*[len];                                           //initialize an array of pointers
+    size = len;                                                                 //set the hash table's number of slots
     for (int i = 0; i < size; i++) {
-        Element<T>* item = new Element<T>();
-        hashTable[i] = item;
+        Element<T>* item = new Element<T>();                                    //initialize an element of class template Element
+        hashTable[i] = item;                                                    //pointer at index i points to newly initilized element
     }
 }
 
 // ================================================
 // insert
+// Pre-condition:
+// Post-condiiton:
+// Parameter:
+// Return:
 // ================================================
 
 template <class T>
@@ -85,6 +76,10 @@ void HashTable<T>::insert(T data, int key) {
 
 // ================================================
 // remove
+// Pre-condition:
+// Post-condiiton:
+// Parameter:
+// Return:
 // ================================================
 
 template <class T>
@@ -121,7 +116,25 @@ void HashTable<T>::remove(int key) {
 }
 
 // ================================================
+// validIndex
+// Pre-condition: Exists a hash table
+// Post-condiiton: Return the index
+// Parameter: int i - the index to be check if 
+//                    it is in the hash table
+// Return: the index if it is in the hash table
+// ================================================
+
+template <class T>
+bool HashTable<T>::validIndex(int i) {
+    return (i >= 0 && i < size);                    //if i is larger thab 0 and smaller than array's size, then return i
+}
+
+// ================================================
 // member
+// Pre-condition:
+// Post-condiiton:
+// Parameter:
+// Return:
 // ================================================
 
 template <class T>
@@ -142,7 +155,29 @@ bool HashTable<T>::member(T data, int key) {
 }
 
 // ================================================
+// h
+// Pre-condition:
+// Post-condiiton:
+// Parameter:
+// Return:
+// ================================================
+
+template <class T>
+int HashTable<T>::h(int k) {
+    if (size == 0) {
+        return -1;
+    }
+    else {
+        return k%size;
+    }
+}
+
+// ================================================
 // to_string
+// Pre-condition:
+// Post-condiiton:
+// Parameter:
+// Return:
 // ================================================
 
 template <class T>
