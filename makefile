@@ -1,6 +1,6 @@
 all: test
 
-test: test_hash_table.o hash_table.o element.o
+test: test_hash_table.o hash_table.o element.o usecase.o
 	g++ -o test $^
 
 test_hash_table.o: test_hash_table.cpp hash_table.h element.h
