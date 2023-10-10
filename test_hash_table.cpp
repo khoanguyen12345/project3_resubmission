@@ -160,7 +160,7 @@ void test_member() {
     }
 }
 
-/*void test_login() {
+void test_login() {
     try {
         HashTable<string>* ht = create_table<string>("logins.csv", 10);
         string username = "IEv";
@@ -173,7 +173,7 @@ void test_member() {
         cerr << "Error in accomplishing login validation : " << e.what() << endl;
     }
 }
-*/
+
 
 int main() {
     test_get_key();
@@ -186,8 +186,7 @@ int main() {
     cout << "test_remove complete" << endl;
     test_member();
     cout << "test_member complete" << endl;
-    //test_login();
-    
+    test_login();
     cout << "Testing completed" << endl;
     
     return 0;
