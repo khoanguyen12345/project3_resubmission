@@ -6,6 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
 #include "hash_table.h"
 #include "element.h"
 
@@ -15,7 +16,7 @@ template <class T>
 HashTable<T>* create_table(string fname, int m) {
     ifstream f;           
     f.open(fname, ios::in);
-    HashTable<T> ht(m);
+    HashTable<T>* ht = new HashTable<T>(m);
     while (f.good()) {
         string user;
         string pass;
@@ -23,11 +24,20 @@ HashTable<T>* create_table(string fname, int m) {
         getline(f, pass, '\n');
         if (user == "") continue;
         if (pass != "") pass.erase(0,1);
-        ht.insert(user, h(pass));    
+        int p = 0;
+        stringstream temp;
+        temp << pass;
+        temp >> p;
+        ht->insert(user, ht->h(p));    
     }
+    return ht;
 }
 
 template <class T>
 bool login(HashTable<T>* ht, T username, string password) {
-    return ht.member(username, h(stoi(password)));
+    int p = 0;
+    stringstream temp;
+    temp << password;
+    temp >> p;
+    return ht->member(username, ht->h(p));
 }
