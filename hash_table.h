@@ -24,6 +24,7 @@ class HashTable
         void remove(int key);                       //remove element
         bool validIndex(int i);                     //check if index is within the hash table
         bool member(T data, int key);               //check if element is in the hash table
-        int h(int k);                               //hash function
+        int h(int k); 
+        int h_most_significant(int k);              //hash function
         string to_string();                         //convert data into string
 };

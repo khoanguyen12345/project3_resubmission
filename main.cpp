@@ -12,9 +12,11 @@ using namespace std;
         string username = "IEv";
         string password = "7170790290";
         if(!login(ht, username, password)){cout << "Incorrect result validating accurate login information" << endl;}
+        cout << "finished correct login test" << endl;
         username = "bad-user";
         password = "98213873";
         if(login(ht, username, password)){cout << "Incorrect result validating inaccurate login information" << endl;}
+        cout << "finished wrong login test" << endl;
         cout << "Enter a username" << endl;
         cin >> username;
         cout << "Enter a password" << endl;

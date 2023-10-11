@@ -11,6 +11,7 @@
 #include <sstream>
 #include "hash_table.h"
 #include "element.h"
+#include <string>
 using namespace std;
 
 // ================================================
@@ -183,7 +184,7 @@ int HashTable<T>::h(int k) {
         return -1;                                  //if empty then return -1
     }
     else {
-        return k%size;                              //return hash value of key k
+        return k%size;                             //return hash value of key k
     }
 }
 
@@ -216,3 +217,25 @@ string HashTable<T>::to_string() {
     return out.str();                                                           //convert the stringstream into string
 }
 
+template <class T>
+int HashTable<T>::h_most_significant(int k) {
+//most significant bit hash function
+        string result;
+        if (k == 0 || k ==1){
+            result = "0";
+            return stoi(result);
+        }else{
+        while (k>2){
+            if (k%2 == 0){
+                result = "0" + result; 
+            }else{
+                result = "1" + result; 
+            }
+            k = k/2;
+        }
+        
+        result = result.substr(0,5);
+        cout << result;
+        return stoi(result);
+        }
+}
