@@ -231,7 +231,7 @@ int HashTable<T>::h_most_significant(int k) {
 
 template <class T>
 void HashTable<T>::insert_most_significant(T data, int key) {
-    int hashVal = h_most_significant(key);               //get hash value of key 'key'   
+    int hashVal = h_most_significant(key);              //get hash value of key 'key'   
     if (validIndex(hashVal)) {                          //check if the key is valid or not, if not then do nothing, else proceed
         Element<T>* node = new Element<T>(data, key);   //pointer points to a new element containing inputted data and key value
         node->next = hashTable[hashVal];                //add the new element to the start of the linked list, connect with the previous first element
