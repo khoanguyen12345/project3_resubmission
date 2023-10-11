@@ -287,3 +287,17 @@ void HashTable<T>::insert_cormen_multiplication(T data, int key) {
         hashTable[hashVal] = node;                                 //set the hash table's index at hashVal to point to the new element
     }
 }
+
+template <class T>
+float HashTable<T>::loadFactor() {
+    float ret = 0.0;
+    for (int i = 0; i < size; i++) {
+        Element<T>* curr = hashTable[i];
+        while (!curr->empty) {
+            ret = ret + 1;
+            curr = curr->next;
+        }
+    }
+    ret = ret/size;
+    return ret;
+}
