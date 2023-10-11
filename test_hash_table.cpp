@@ -609,9 +609,6 @@ void test_login() {
         username = "ee";
         password = "";
         if(login(ht, username, password)){cout << "Incorrect result validating blank password information" << endl;}
-        username = "123";
-        // int password2 = 333;
-        // if(login(ht, username, password2)){cout << "Incorrect result validating input type" << endl;}
     } catch(exception& e) {
         cerr << "Error in accomplishing login validation : " << e.what() << endl;
     }
