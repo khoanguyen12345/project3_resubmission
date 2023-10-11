@@ -218,10 +218,16 @@ string HashTable<T>::to_string() {
     return out.str();                                                           //convert the stringstream into string
 }
 
-
+// ================================================
+// h_most_significant
+// Set hash value of key k
+// Pre-condition: Exist a hash table with key at index k
+// Post-condition: Return the hash value of key k
+// Parameter: int k - a key value
+// Return: Return most significant k
+// ================================================
 template <class T>
 int HashTable<T>::h_most_significant(int k) {
-//most significant bit hash function
         int no_bits = floor(log2(k)) +1;
         int space = size;
         while (log2(space) != floor(log2(space))) {
@@ -236,6 +242,18 @@ int HashTable<T>::h_most_significant(int k) {
         return k;
 }
 
+// ================================================
+// insert_most_significant
+// Insert an element into the Hash Table
+// Pre-condition: Exists a HashTable; 
+//                element must have key that is in range 
+//                of the Hash Table
+// Post-condition: HashTable contains the new element
+// Parameter: T data - the data of element to be inserted
+//            int key - the key value of element to be inserted
+// Return: None
+// ================================================
+
 template <class T>
 void HashTable<T>::insert_most_significant(T data, int key) {
     int hashVal = h_most_significant(key);              //get hash value of key 'key'   
@@ -247,6 +265,19 @@ void HashTable<T>::insert_most_significant(T data, int key) {
         hashTable[hashVal] = node;                      //set the hash table's index at hashVal to point to the new element
     }
 }
+
+// ================================================
+// member_most_significant
+// Check if an element is in the hash table
+// Pre-condition: Exists a hash table
+// Post-condition: Return true if element to be
+//                 check is in the hash table
+//                 Else return false
+// Parameter: T data - targeted element's data
+//            int key - targeted element's key value
+// Return: true if targeted element is in
+//         the hash table, false otherwise
+// ================================================
 
 template <class T>
 bool HashTable<T>::member_most_significant(T data, int key) {
@@ -265,7 +296,14 @@ bool HashTable<T>::member_most_significant(T data, int key) {
     return ret;
 }
 
-//Cormen multiplication
+// ================================================
+// h_most_significant
+// Set hash value of key k
+// Pre-condition: Exist a hash table with key at index k
+// Post-condition: Return the hash value of key k
+// Parameter: int k - a key value
+// Return: Return most significant k
+// ================================================
 
 template <class T>
 int HashTable<T>::h_cormen_multiplication(int k) {
@@ -275,6 +313,18 @@ int HashTable<T>::h_cormen_multiplication(int k) {
     int result = floor(fmod(temp,1) * m);                                 //(k*A)%1 fractional part of k*A, m is a power of 2
     return result;
 }
+
+// ================================================
+// insert_cormen_multiplication
+// Insert an element into the Hash Table
+// Pre-condition: Exists a HashTable; 
+//                element must have key that is in range 
+//                of the Hash Table
+// Post-condition: HashTable contains the new element
+// Parameter: T data - the data of element to be inserted
+//            int key - the key value of element to be inserted
+// Return: None
+// ================================================
 
 template <class T>
 void HashTable<T>::insert_cormen_multiplication(T data, int key) {
@@ -288,20 +338,26 @@ void HashTable<T>::insert_cormen_multiplication(T data, int key) {
     }
 }
 
-//Returns a float - load factor of the hash table method is called on\
-//Preconditions - called on valid Hash Table object with non zero size
-//Postconditions - returns average load factor for hash table object
+// ================================================
+// loadFactor
+// Retrieve load factor of the hash table
+// Pre-conditions: called on valid Hash Table object with non zero size
+// Post-conditions: returns average load factor for hash table object
+// Parameter: None
+// Return: load factor of the hash table method is called on
+// ================================================
+
 template <class T>
 float HashTable<T>::loadFactor() {
     float ret = 0.0;
-    if (size == 0) return 0;
-    for (int i = 0; i < size; i++) {
+    if (size == 0) return 0;                        //if hash table empty then return 0
+    for (int i = 0; i < size; i++) {                //traverse through elements in the hash table
         Element<T>* curr = hashTable[i];
-        while (!curr->empty) {
+        while (!curr->empty) {                      //go through linked list of the current key
             ret = ret + 1;
             curr = curr->next;
         }
     }
-    ret = ret/size;
+    ret = ret/size;                                 //get the load factor
     return ret;
 }
