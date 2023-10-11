@@ -35,7 +35,7 @@ void test(int numbers[],int array_size){
     }
     range = max - min;
     cout << "minmum elements in a linked list is: " << min << endl;
-    cout << "minmum elements in a linked list is: " << max << endl;
+    cout << "maximum elements in a linked list is: " << max << endl;
     cout << "range of elements between the lrgest and smallest linked list is: " << range << endl;
 
 }
