@@ -24,9 +24,14 @@ class HashTable
         void remove(int key);                       //remove element
         bool validIndex(int i);                     //check if index is within the hash table
         bool member(T data, int key);               //check if element is in the hash table
-        int h(int k); 
-        int h_most_significant(int k);              //hash function
-        string to_string();
+        int h(int k);                               //hash function
+        
+        int h_most_significant(int k);              
         void insert_most_significant(T data, int key);                         //convert data into string
         bool member_most_significant(T data, int key);
+        
+        int h_cormen_multiplication(int k);              
+        void insert_cormen_multiplication(T data, int key);                         
+        bool member_cormen_multiplication(T data, int key);
+        string to_string();                         //convert data into string
 };
