@@ -222,9 +222,16 @@ string HashTable<T>::to_string() {
 template <class T>
 int HashTable<T>::h_most_significant(int k) {
 //most significant bit hash function
-        int no_bits = log2(k) +1;
-        int shifts = no_bits - 5; //p = 5
-        k = k << shifts;
+        int no_bits = floor(log2(k)) +1;
+        int space = size;
+        while (log2(space) != floor(log2(space))) {
+            space--;
+        }
+        int shifts = log2(space);
+        
+        while (floor(log2(k)) + 1 >= shifts) {
+            k = k >> shifts;
+        }
         cout << k << " ";
         return k;
 }
@@ -262,10 +269,10 @@ bool HashTable<T>::member_most_significant(T data, int key) {
 
 template <class T>
 int HashTable<T>::h_cormen_multiplication(int k) {
-//most significant bit hash function
-    const int A = (sqrt(5)-1)/2;
+    const float A = (sqrt(5)-1)/2;
     int m = pow(2,3);
-    int result = floor( ((k*A)%1) * m);                                 //(k*A)%1 fractional part of k*A, m is a power of 2
+    float temp = k*A;
+    int result = floor(fmod(temp,1) * m);                                 //(k*A)%1 fractional part of k*A, m is a power of 2
     return result;
 }
 
@@ -279,21 +286,4 @@ void HashTable<T>::insert_cormen_multiplication(T data, int key) {
         hashTable[hashVal]->prev = node;                           //previous first element's prev pointer points to newly inserted element
         hashTable[hashVal] = node;                                 //set the hash table's index at hashVal to point to the new element
     }
-}
-
-template <class T>
-bool HashTable<T>::member_cormen_multiplication(T data, int key) {
-    int hashVal = h_cormen_multiplication(key);
-    bool ret = false;
-    if (validIndex(hashVal)) {
-        Element<T>* curr = hashTable[hashVal];
-        while (!curr->empty) {
-            if (curr->data == data && curr->key == key) {
-                ret = true;
-                break;
-            }
-            curr = curr->next;
-        }
-    }
-    return ret;
 }

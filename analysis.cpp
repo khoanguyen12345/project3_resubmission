@@ -19,6 +19,7 @@ void test(int numbers[],int array_size){
     int ht_size = 5;
     HashTable<int> ht1(ht_size);
     for (int i=0;i<array_size;i++){
+        cout << numbers[i];
         ht1.insert_cormen_multiplication(0,numbers[i]);
         
     }
@@ -41,6 +42,10 @@ void test(int numbers[],int array_size){
 }
 
 int main(){
-    int numbers[10] = {1,2,3,4,5,6,7,8,9,10};
-    test(numbers,10);
+    srand (time(NULL));
+    int numbers[100001];
+    for(int i = 0; i <= 100000; i++){
+    numbers[i] = i* (rand() % 100 + 1 );
+    }
+    test(numbers,100001);
 }
