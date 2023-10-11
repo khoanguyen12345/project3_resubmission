@@ -20,7 +20,7 @@ HashTable<T>* create_table(string fname, int m) {
     f.open(fname, ios::in);
     HashTable<T>* ht = new HashTable<T>(m);
     while (f.good()) {
-        string user;
+        string user ;
         string pass;
         getline(f, user, ',');
         getline(f, pass, '\n');
@@ -30,7 +30,7 @@ HashTable<T>* create_table(string fname, int m) {
         stringstream temp;
         temp << pass;
         temp >> p;
-        ht->insert_most_significant(user, ht->h_most_significant(p));    
+        ht->insert(user, ht->h(p));    
     }
     return ht;
 }
@@ -41,5 +41,5 @@ bool login(HashTable<T>* ht, T username, string password) {
     stringstream temp;
     temp << password;
     temp >> p;
-    return ht->member_most_significant(username, ht->h_most_significant(p));
+    return ht->member(username, ht->h(p));
 }

@@ -6,7 +6,7 @@
 
 using namespace std;
 
-   void test_login() {
+   void test_login_default() {
     try {
         HashTable<string>* ht = create_table<string>("logins.csv", 10);
         string username = "IEv";
@@ -14,7 +14,7 @@ using namespace std;
         if(!login(ht, username, password)){cout << "Incorrect result validating accurate login information" << endl;}
         cout << "finished correct login test" << endl;
         username = "bad-user";
-        password = "98213873";
+        password = "98213873" ;
         if(login(ht, username, password)){cout << "Incorrect result validating inaccurate login information" << endl;}
         cout << "finished wrong login test" << endl;
         cout << "Enter a username" << endl;
@@ -28,6 +28,6 @@ using namespace std;
 }
 
 int main(){
-    test_login();
+    test_login_default();
     return 0;
 }

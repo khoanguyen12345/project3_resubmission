@@ -220,23 +220,11 @@ string HashTable<T>::to_string() {
 template <class T>
 int HashTable<T>::h_most_significant(int k) {
 //most significant bit hash function
-        string result;
-        if (k == 0 || k ==1){ //convert decimal to binary
-            result = "0";
-            return stoi(result);
-        }else{
-        while (k>2){
-            if (k%2 == 0){
-                result = "0" + result; 
-            }else{
-                result = "1" + result; 
-            }
-            k = k/2;
-        }
-        
-        result = result.substr(0,5); //p = 5 (p most significant bits)
-        return stoi(result);
-        }
+        int no_bits = log2(k) +1;
+        int shifts = no_bits - 5; //p = 5
+        k = k << shifts;
+        cout << k << " ";
+        return k;
 }
 
 template <class T>

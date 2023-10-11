@@ -169,6 +169,15 @@ void test_login() {
         username = "bad-user";
         password = "98213873";
         if(login(ht, username, password)){cout << "Incorrect result validating inaccurate login information" << endl;}
+        username = "";
+        password = "";
+        if(login(ht, username, password)){cout << "Incorrect result validating blank login information" << endl;}
+        username = "";
+        password = "ee";
+        if(login(ht , username, password)){cout << "Incorrect result validating blank username information" << endl;}
+        username = "ee";
+        password = "";
+        if(login(ht, username, password)){cout << "Incorrect result validating blank password information" << endl;}
     } catch(exception& e) {
         cerr << "Error in accomplishing login validation : " << e.what() << endl;
     }
