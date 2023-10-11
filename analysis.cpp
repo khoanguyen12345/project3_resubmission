@@ -48,6 +48,14 @@ void test(int numbers[],int array_size){
 
 }
 
+void testSigbits(int numbers[], int arraySize) {
+    HashTable<int>* ht2 = new HashTable<T>(5);
+    for (int i = 0; i < arraySize; i++) {
+        ht2->insert_most_significant(0, numbers[i]);
+    }
+    cout << ht2->loadFactor() << " is our sig bit load factor" << endl;
+}
+
 int main(){
     srand (time(NULL));
     int numbers[100001];
@@ -55,4 +63,5 @@ int main(){
     numbers[i] = i* (rand() % 100 + 1 );
     }
     test(numbers,100001);
+    testSigbits(numbers, 100001);
 }
