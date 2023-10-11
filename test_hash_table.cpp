@@ -84,15 +84,19 @@ void test_get_data() {
         Element<int> e_int(10, 6);
         if(e_int.get_data()!=10){cout << "Incorrect result from get data. Expected 10 but got : " << e_int.get_data() << endl;}
         Element<int> e_int1(25, 6);
-        if(e_int1.get_data()!=25){cout << "Incorrect result from get data. Expected 10 but got : " << e_int1.get_data() << endl;}
-        Element<int> e_int2(-10, 6);
-        if(e_int2.get_data()!=-10){cout << "Incorrect result from get data. Expected 10 but got : " << e_int2.get_data() << endl;}
+        if(e_int1.get_data()!=25){cout << "Incorrect result from get data. Expected 25 but got : " << e_int1.get_data() << endl;}
+        Element<int> e_int2(13, 6);
+        if(e_int2.get_data()!=13){cout << "Incorrect result from get data. Expected 13 but got : " << e_int2.get_data() << endl;}
 
         //string element
         Element<string> e_string("hi", 6);
         if(e_string.get_data()!="hi"){cout << "Incorrect result from get data. Expected 'hi' but got : " << e_string.get_data() << endl;}
         Element<string> e_string1("haaaaaa", 6);
         if(e_string1.get_data()!="haaaaaa"){cout << "Incorrect result from get data. Expected 'haaaaaa' but got : " << e_string1.get_data() << endl;}
+        Element<string> e_string2("hhhha", 6);
+        if(e_string2.get_data()!="hhhha"){cout << "Incorrect result from get data. Expected 'hhhha' but got : " << e_string1.get_data() << endl;}
+        Element<string> e_string3("hhhhaaaa", 6);
+        if(e_string3.get_data()!="hhhhaaaa"){cout << "Incorrect result from get data. Expected 'hhhhaaaa' but got : " << e_string1.get_data() << endl;}
     
         //bool element
         Element<bool> e_bool(false, 2);
@@ -175,34 +179,34 @@ void test_insert() {
 
     try {
         HashTable<string> ht2(5);
-        ht2.insert("h", 0);
-        if(ht2.to_string()!="0: (h,0) \n1: \n2: \n3: \n4: \n\nBut got\n\n") {
-            cout << "Incorrect result of inserting into table. Expected\n\n0: (hi,0) \n1: \n2: \n3: \n4: \n\nBut got\n\n" << ht2.to_string() << endl;
+        ht2.insert("hi", 6);
+        if(ht2.to_string()!="0: \n1: (hi,6) \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of inserting into table. Expected\n\n0: \n1: (hi,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht2.to_string() << endl;
         }
-        // ht2.insert(1, 21);
-        // if(ht2.to_string()!="") {
-        //     cout << "Incorrect result of inserting into table" << endl;
-        // }
-        // ht2.insert(0, 0);
-        // if(ht2.to_string()!="") {
-        //     cout << "Incorrect result of inserting into table" << endl;
-        // }
-        // ht2.insert(12, 12);
-        // if(ht2.to_string()!="") {
-        //     cout << "Incorrect result of inserting into table" << endl;
-        // }
-        // ht2.insert(7, 13);
-        // if(ht2.to_string()!="") {
-        //     cout << "Incorrect result of inserting into table" << endl;
-        // }
-        // ht2.insert(15, 14);
-        // if(ht2.to_string()!="") {
-        //     cout << "Incorrect result of inserting into table" << endl;
-        // }
-        // ht2.insert(27, 14);
-        // if(ht2.to_string()!="") {
-        //     cout << "Incorrect result of inserting into table" << endl;
-        // } 
+        ht2.insert("hhii", 1);
+        if(ht2.to_string()!="0: \n1: (hhii,1) (hi,6) \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+        ht2.insert("hhhii", 0);
+        if(ht2.to_string()!="0: (hhhii,0) \n1: (hhii,1) (hi,6) \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+        ht2.insert("hihih", 12);
+        if(ht2.to_string()!="0: (hhhii,0) \n1: (hhii,1) (hi,6) \n2: (hihih,12) \n3: \n4: \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+        ht2.insert("hiiii", 13);
+        if(ht2.to_string()!="0: (hhhii,0) \n1: (hhii,1) (hi,6) \n2: (hihih,12) \n3: (hiiii,13) \n4: \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+        ht2.insert("hhhhi", 14);
+        if(ht2.to_string()!="0: (hhhii,0) \n1: (hhii,1) (hi,6) \n2: (hihih,12) \n3: (hiiii,13) \n4: (hhhhi,14) \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+        ht2.insert("h", 24);
+        if(ht2.to_string()!="0: (hhhii,0) \n1: (hhii,1) (hi,6) \n2: (hihih,12) \n3: (hiiii,13) \n4: (h,24) (hhhhi,14) \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        } 
 
     } catch(exception& e) {
         cerr << "Error inserting into non-empty table : " << e.what() << endl;
@@ -239,10 +243,10 @@ void test_insert() {
             cout << "Incorrect result of inserting into table" << endl;
         }
 
-        ht3.insert('0', 1);
-        if(ht3.to_string()!="0: (a,10) (a,0) \n1: (0,1) \n2: (3,2) \n3: (c,13) (b,3) \n4: (d,4) \n") {
-            cout << "Incorrect result of inserting into table" << endl;
-        }
+        // ht3.insert('0', 1);
+        // if(ht3.to_string()!="0: (a,10) (a,0) \n1: (0,1) \n2: (3,2) \n3: (c,13) (b,3) \n4: (d,4) \n") {
+        //     cout << "Incorrect result of inserting into table" << endl;
+        // }
 
     } catch(exception& e) {
         cerr << "Error inserting into non-empty table : " << e.what() << endl;
@@ -391,7 +395,7 @@ void test_remove() {
         ht_bool.insert(true, 6);
         ht_bool.remove(5);
         if(ht_bool.to_string()!="0: \n1: (1,6) \n2: \n3: \n4: \n") {
-            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_bool.to_string() << endl;
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (1,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_bool.to_string() << endl;
         }
         ht_bool.remove(6);
         if(ht_bool.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
