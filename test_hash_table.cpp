@@ -262,6 +262,137 @@ void test_remove() {
         if(ht.to_string()!="0: \n1: (10,6) \n2: \n3: \n4: \n") {
             cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht.to_string() << endl;
         }
+        ht.remove(6);
+        if(ht.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht.to_string() << endl;
+        }
+        ht.remove(6); //removing twice
+        if(ht.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht.to_string() << endl;
+        }
+        ht.insert(10, 0);
+        ht.remove(0); //removing at head
+        if(ht.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: \n2: \n3: \n4: \n\nBut got\n\n" << ht.to_string() << endl;
+        }
+        ht.insert(10, 0);
+        ht.insert(10, 4);
+        ht.remove(4); //removing at tail and removing if there is a duplicate value
+        if(ht.to_string()!="0: (10,0) \n1: \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: (10,4) \n1: \n2: \n3: \n4: \n\nBut got\n\n" << ht.to_string() << endl;
+        }
+        ht.remove(-1); //removing negative
+        if(ht.to_string()!="0: (10,0) \n1: \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: (10,4) \n1: \n2: \n3: \n4: \n\nBut got\n\n" << ht.to_string() << endl;
+        }
+
+        HashTable<string> ht_str(5);
+        ht_str.insert("hi", 6);
+        ht_str.remove(5);
+        if(ht_str.to_string()!="0: \n1: (hi,6) \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht_str.to_string() << endl;
+        }
+        ht_str.remove(6);
+        if(ht_str.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht_str.to_string() << endl;
+        }
+        ht_str.remove(6); //removing twice
+        if(ht_str.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht_str.to_string() << endl;
+        }
+        ht_str.insert("cs 1111", 0);
+        ht_str.remove(0); //removing at head
+        if(ht_str.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: \n2: \n3: \n4: \n\nBut got\n\n" << ht_str.to_string() << endl;
+        }
+        ht_str.insert("cs 1111", 0);
+        ht_str.insert("cs 1111", 4);
+        ht_str.remove(4); //removing at tail and removing if there is a duplicate value
+        if(ht_str.to_string()!="0: (cs 1111,0) \n1: \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: (10,4) \n1: \n2: \n3: \n4: \n\nBut got\n\n" << ht_str.to_string() << endl;
+        }
+
+        HashTable<bool> ht_bool(5);
+        ht_bool.insert(true, 6);
+        ht_bool.remove(5);
+        if(ht_bool.to_string()!="0: \n1: (1,6) \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_bool.to_string() << endl;
+        }
+        ht_bool.remove(6);
+        if(ht_bool.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_bool.to_string() << endl;
+        }
+        ht_bool.remove(6); //removing twice
+        if(ht_bool.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_bool.to_string() << endl;
+        }
+        ht_bool.insert(false, 0);
+        ht_bool.remove(0); //removing at head
+        if(ht_bool.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: \n2: \n3: \n4: \n\nBut got\n\n' << ht_bool.to_string() << endl;
+        }
+        ht_bool.insert(false, 0);
+        ht_bool.insert(false, 4);
+        ht_bool.remove(4); //removing at tail and removing if there is a duplicate value
+        if(ht_bool.to_string()!="0: (0,0) \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: (10,4) \n1: \n2: \n3: \n4: \n\nBut got\n\n' << ht_bool.to_string() << endl;
+        }
+
+        HashTable<char> ht_char(5);
+        ht_char.insert('h', 6);
+        ht_char.remove(5);
+        if(ht_char.to_string() != "0: \n1: (h,6) \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_char.to_string() << endl;
+        }
+        ht_char.remove(6);
+        if(ht_char.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_char.to_string() << endl;
+        }
+        ht_char.remove(6); //removing twice
+        if(ht_char.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_char.to_string() << endl;
+        }
+        ht_char.insert('c', 0);
+        ht_char.remove(0); //removing at head
+        if(ht_char.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: \n2: \n3: \n4: \n\nBut got\n\n' << ht_char.to_string() << endl;
+        }
+        ht_char.insert('c', 0);
+        ht_char.insert('c', 4);
+        ht_char.remove(4); //removing at tail and removing if there is a duplicate value
+        if(ht_char.to_string()!="0: (c,0) \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: (10,4) \n1: \n2: \n3: \n4: \n\nBut got\n\n' << ht_char.to_string() << endl;
+        }
+
+        HashTable<float> ht_float(5);
+        ht_float.insert(4.2, 6);
+        ht_float.remove(5);
+        if(ht_float.to_string() != "0: \n1: (4.2,6) \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_float.to_string() << endl;
+        }
+        ht_float.remove(6);
+        if(ht_float.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_float.to_string() << endl;
+        }
+        ht_float.remove(6); //removing twice
+        if(ht_float.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_float.to_string() << endl;
+        }
+        ht_float.insert(6.1, 0);
+        ht_float.remove(0); //removing at head
+        if(ht_float.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: \n2: \n3: \n4: \n\nBut got\n\n' << ht_float.to_string() << endl;
+        }
+        ht_float.insert(6.44, 0);
+        ht_float.insert(6.44, 4);
+        ht_float.remove(4); //removing at tail and removing if there is a duplicate value
+        if(ht_float.to_string()!="0: (6.44,0) \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: (10,4) \n1: \n2: \n3: \n4: \n\nBut got\n\n' << ht_float.to_string() << endl;
+        }
+
+
+
+
     } catch(exception& e) {
         cerr << "Error removing non-member from table : " << e.what() << endl;
     }
