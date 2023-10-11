@@ -37,8 +37,8 @@ HashTable<T>::HashTable() {
 // ================================================
 // HashTable
 // Create an instance of class HashTable with 'len' slots
-// Pre-condition: None
-// Post-condition: A new hash table with 'len' slots
+// Pre-condition: Called with a positive integer len passed in as an argument
+// Post-condition: A new hash table with 'len' slots is created
 // Parameter: len - number of slots that the hash table will have
 // Return: None
 // ================================================
