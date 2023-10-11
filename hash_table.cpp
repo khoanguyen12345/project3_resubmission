@@ -220,10 +220,11 @@ string HashTable<T>::to_string() {
 
 // ================================================
 // h_most_significant
-// Pre-condition: 
-// Post-condition: 
-// Parameter: int k - element's key value
-// Return: modified key value
+// Set hash value of key k
+// Pre-condition: Exist a hash table with key at index k
+// Post-condition: Return the hash value of key k
+// Parameter: int k - a key value
+// Return: Return most significant k
 // ================================================
 template <class T>
 int HashTable<T>::h_most_significant(int k) {
@@ -296,7 +297,14 @@ bool HashTable<T>::member_most_significant(T data, int key) {
     return ret;
 }
 
-//Cormen multiplication
+// ================================================
+// h_most_significant
+// Set hash value of key k
+// Pre-condition: Exist a hash table with key at index k
+// Post-condition: Return the hash value of key k
+// Parameter: int k - a key value
+// Return: Return most significant k
+// ================================================
 
 template <class T>
 int HashTable<T>::h_cormen_multiplication(int k) {
@@ -309,6 +317,14 @@ int HashTable<T>::h_cormen_multiplication(int k) {
 
 // ================================================
 // insert_cormen_multiplication
+// Insert an element into the Hash Table
+// Pre-condition: Exists a HashTable; 
+//                element must have key that is in range 
+//                of the Hash Table
+// Post-condition: HashTable contains the new element
+// Parameter: T data - the data of element to be inserted
+//            int key - the key value of element to be inserted
+// Return: None
 // ================================================
 
 template <class T>
