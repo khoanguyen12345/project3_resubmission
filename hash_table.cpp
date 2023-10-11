@@ -234,7 +234,7 @@ int HashTable<T>::h_most_significant(int k) {
             k = k/2;
         }
         
-        result = result.substr(0,5);
+        result = result.substr(0,5); //p = 5
         return stoi(result);
         }
 }
