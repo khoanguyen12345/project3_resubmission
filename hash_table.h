@@ -32,6 +32,8 @@ class HashTable
         bool member_cormen_multiplication(T data, int key);
         string to_string();                         //convert data into string
 
+        float loadFactor();
+
         Element<T>** hashTable;
         int size;
 };
