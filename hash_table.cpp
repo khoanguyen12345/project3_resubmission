@@ -228,7 +228,6 @@ string HashTable<T>::to_string() {
 // ================================================
 template <class T>
 int HashTable<T>::h_most_significant(int k) {
-//most significant bit hash function
         int no_bits = floor(log2(k)) +1;
         int space = size;
         while (log2(space) != floor(log2(space))) {

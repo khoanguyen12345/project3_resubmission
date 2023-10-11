@@ -21,6 +21,7 @@ int sizeList(Element<int> x){
     return counter;
 }
 
+//testing to find the minimum elements, maximum elements, and difference between min and max value
 void test(int numbers[],int array_size){
     int load_factor;
     int ht_size = 5;
