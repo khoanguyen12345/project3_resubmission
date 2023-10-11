@@ -297,4 +297,3 @@ bool HashTable<T>::member_cormen_multiplication(T data, int key) {
     }
     return ret;
 }
-
