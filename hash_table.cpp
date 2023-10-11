@@ -12,6 +12,7 @@
 #include "hash_table.h"
 #include "element.h"
 #include <string>
+#include <math.h>
 using namespace std;
 
 // ================================================
@@ -217,6 +218,7 @@ string HashTable<T>::to_string() {
     return out.str();                                                           //convert the stringstream into string
 }
 
+
 template <class T>
 int HashTable<T>::h_most_significant(int k) {
 //most significant bit hash function
@@ -263,19 +265,19 @@ int HashTable<T>::h_cormen_multiplication(int k) {
 //most significant bit hash function
     const int A = (sqrt(5)-1)/2;
     int m = pow(2,3);
-    int result = floor( ((k*A)%1) * m); //(k*A)%1 fractional part of k*A, m is a power of 2
+    int result = floor( ((k*A)%1) * m);                                 //(k*A)%1 fractional part of k*A, m is a power of 2
     return result;
 }
 
 template <class T>
 void HashTable<T>::insert_cormen_multiplication(T data, int key) {
-    int hashVal = h_cormen_multiplication(key);               //get hash value of key 'key'   
-    if (validIndex(hashVal)) {                          //check if the key is valid or not, if not then do nothing, else proceed
-        Element<T>* node = new Element<T>(data, key);   //pointer points to a new element containing inputted data and key value
-        node->next = hashTable[hashVal];                //add the new element to the start of the linked list, connect with the previous first element
-        node->prev = nullptr;                           //set new element's previous pointer to nil
-        hashTable[hashVal]->prev = node;                //previous first element's prev pointer points to newly inserted element
-        hashTable[hashVal] = node;                      //set the hash table's index at hashVal to point to the new element
+    int hashVal = h_cormen_multiplication(key);                    //get hash value of key 'key'   
+    if (validIndex(hashVal)) {                                     //check if the key is valid or not, if not then do nothing, else proceed
+        Element<T>* node = new Element<T>(data, key);              //pointer points to a new element containing inputted data and key value
+        node->next = hashTable[hashVal];                           //add the new element to the start of the linked list, connect with the previous first element
+        node->prev = nullptr;                                      //set new element's previous pointer to nil
+        hashTable[hashVal]->prev = node;                           //previous first element's prev pointer points to newly inserted element
+        hashTable[hashVal] = node;                                 //set the hash table's index at hashVal to point to the new element
     }
 }
 
