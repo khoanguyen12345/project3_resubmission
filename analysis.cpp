@@ -10,58 +10,48 @@
 #include <string>
 #include <iostream>
 
-//size of linked lists for use of analysis
-int sizeList(Element<int> x){
-     Element<int>* curr = &x;
-     int counter = 0;
-    while (!curr->empty) {                                                
-        curr = curr->next;  
-        counter++;                                                
+
+float testCormen(int numbers[], int arraySize) {
+    HashTable<int>* ht1 = new HashTable<int>(20);
+    for (int i = 0; i < arraySize; i++) {
+        ht1->insert_cormen_multiplication(0, numbers[i]);
     }
-    return counter;
+    cout << ht1->loadFactor() << endl;
+    return ht1->loadFactor();
 }
 
-void test(int numbers[],int array_size){
-    int load_factor;
-    int ht_size = 5;
-    HashTable<int> ht1(ht_size);
-    for (int i=0;i<array_size;i++){
-        cout << numbers[i];
-        ht1.insert_cormen_multiplication(0,numbers[i]);
-        
-    }
-    int max = 0;
-    int min = 2147483647;
-    int range = 0;
-    for (int i=0;i<ht_size;i++){
-        int sizeCurr = sizeList(*ht1.hashTable[i]);
-        if (sizeCurr > max){
-            max = sizeCurr;
-        }else if (sizeCurr < min){
-            min = sizeCurr;
-        }
-    }
-    range = max - min;
-    cout << "minmum elements in a linked list is: " << min << endl;
-    cout << "maximum elements in a linked list is: " << max << endl;
-    cout << "range of elements between the lrgest and smallest linked list is: " << range << endl;
-
-}
-
-void testSigbits(int numbers[], int arraySize) {
-    HashTable<int>* ht2 = new HashTable<int>(5);
+float testSigbits(int numbers[], int arraySize) {
+    HashTable<int>* ht2 = new HashTable<int>(20);
     for (int i = 0; i < arraySize; i++) {
         ht2->insert_most_significant(0, numbers[i]);
     }
-    cout << ht2->loadFactor() << " is our sig bit load factor" << endl;
+    cout << ht2->loadFactor() << endl;
+    return ht2->loadFactor();
 }
 
-int main(){
-    srand (time(NULL));
-    int numbers[100001];
-    for(int i = 0; i <= 100000; i++){
-    numbers[i] = i* (rand() % 100 + 1 );
+int main() {
+
+    srand(time(NULL));
+    int numbers[100000];
+
+    for (int i = 0; i < 100000; i++) {
+        numbers[i] = i* (rand() % 100 + 1 );
     }
-    test(numbers,100001);
-    testSigbits(numbers, 100001);
+
+    float cormen = 0;
+    for (int i = 0; i < 2; i++) {
+        float val = testCormen(numbers,100000);
+        cormen = cormen + val;
+    }
+    cormen = cormen/2;
+
+    float sigBits = 0;
+    for (int i = 0; i < 2; i++) {
+        float val = testSigbits(numbers,100000);
+        sigBits = sigBits + val;
+    }
+    sigBits = sigBits/2;
+
+    cout << "Over 1 run of tests where we used srand to generate an array of 100000 numbers and inserted everything in it to hash tables using both hash functions," << endl;
+    cout << "We obtain a load factor using the significant bits function of " << sigBits << " elements in one slot of our HashTable of length 20 and " << cormen << " using the cormen method instead." << endl; 
 }
