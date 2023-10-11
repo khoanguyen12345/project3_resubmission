@@ -173,12 +173,12 @@ void test_insert() {
         cerr << "Error inserting into non-empty table : " << e.what() << endl;
     }
 
-    // try {
-    //     HashTable<string> ht2(5);
-    //     ht2.insert("hi", 6);
-    //     if(ht2.to_string()!="0: \n1: (hi,6) \n2: \n3: \n4: \n\nBut got\n\n") {
-    //         cout << "Incorrect result of inserting into table. Expected\n\n0: \n1: (hi,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht2.to_string() << endl;
-    //     }
+    try {
+        HashTable<string> ht2(5);
+        ht2.insert("h", 0);
+        if(ht2.to_string()!="0: (h,0) \n1: \n2: \n3: \n4: \n\nBut got\n\n") {
+            cout << "Incorrect result of inserting into table. Expected\n\n0: (hi,0) \n1: \n2: \n3: \n4: \n\nBut got\n\n" << ht2.to_string() << endl;
+        }
         // ht2.insert(1, 21);
         // if(ht2.to_string()!="") {
         //     cout << "Incorrect result of inserting into table" << endl;
@@ -204,9 +204,9 @@ void test_insert() {
         //     cout << "Incorrect result of inserting into table" << endl;
         // } 
 
-    // } catch(exception& e) {
-    //     cerr << "Error inserting into non-empty table : " << e.what() << endl;
-    // }
+    } catch(exception& e) {
+        cerr << "Error inserting into non-empty table : " << e.what() << endl;
+    }
 
     try {
         HashTable<char> ht3(5);

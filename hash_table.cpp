@@ -222,9 +222,16 @@ string HashTable<T>::to_string() {
 template <class T>
 int HashTable<T>::h_most_significant(int k) {
 //most significant bit hash function
-        int no_bits = log2(k) +1;
-        int shifts = no_bits - 5; //p = 5
-        k = k << shifts;
+        int no_bits = floor(log2(k)) +1;
+        int space = size;
+        while (log2(space) != floor(log2(space))) {
+            space--;
+        }
+        int shifts = log2(space);
+        
+        while (floor(log2(k)) + 1 >= shifts) {
+            k = k >> shifts;
+        }
         cout << k << " ";
         return k;
 }
