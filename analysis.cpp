@@ -49,7 +49,7 @@ void test(int numbers[],int array_size){
 }
 
 void testSigbits(int numbers[], int arraySize) {
-    HashTable<int>* ht2 = new HashTable<T>(5);
+    HashTable<int>* ht2 = new HashTable<int>(5);
     for (int i = 0; i < arraySize; i++) {
         ht2->insert_most_significant(0, numbers[i]);
     }
