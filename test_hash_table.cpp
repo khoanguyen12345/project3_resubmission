@@ -36,7 +36,7 @@ void test_get_key() {
         Element<string> e_string("hi", 6);
         if(e_string.get_key()!=6){cout << "Incorrect result from get key. Expected 6 but got : " << e_string.get_key() << endl;}
         Element<string> e_string2("hi", 0);
-        if(e_string2.get_key()!=0){cout << "Incorrect result from get key. Expected 1 but got : " << e_string2.get_key() << endl;}
+        if(e_string2.get_key()!=0){cout << "Incorrect result from get key. Expected 0 but got : " << e_string2.get_key() << endl;}
         Element<string> e_string3("hi", 1);
         if(e_string3.get_key()!=1){cout << "Incorrect result from get key. Expected 1 but got : " << e_string3.get_key() << endl;}
        
@@ -72,9 +72,13 @@ void test_get_key() {
 
 void test_get_data() {
     try {
-         //empty element
+         //empty elements for all types
         Element<int> e;
         if(e.get_data()!=0){cout << "Incorrect result from get data. Expected 0 but got : " << e.get_data() << endl;}
+        Element<bool> g;
+        if(g.get_data()!=false){cout << "Incorrect result from get data. Expected false but got : " << g.get_data() << endl;}
+        Element<float> h;
+        if(h.get_data()!=0.0){cout << "Incorrect result from get data. Expected 0.0 but got : " << h.get_data() << endl;}
         
         //int element
         Element<int> e_int(10, 6);
@@ -88,11 +92,7 @@ void test_get_data() {
         Element<string> e_string("hi", 6);
         if(e_string.get_data()!="hi"){cout << "Incorrect result from get data. Expected 'hi' but got : " << e_string.get_data() << endl;}
         Element<string> e_string1("haaaaaa", 6);
-        if(e_string1.get_data()!="haaaaaa"){cout << "Incorrect result from get data. Expected 'hi' but got : " << e_string1.get_data() << endl;}
-        Element<string> e_string3("hhhhaaa", 6);
-        if(e_string3.get_data()!="hhhhaaa"){cout << "Incorrect result from get data. Expected 'hi' but got : " << e_string3.get_data() << endl;}
-        Element<string> e_string4("hhaaaaa", 6);
-        if(e_string4.get_data()!="hhaaaaa"){cout << "Incorrect result from get data. Expected 'hi' but got : " << e_string4.get_data() << endl;}
+        if(e_string1.get_data()!="haaaaaa"){cout << "Incorrect result from get data. Expected 'haaaaaa' but got : " << e_string1.get_data() << endl;}
     
         //bool element
         Element<bool> e_bool(false, 2);
@@ -337,6 +337,137 @@ void test_remove() {
         if(ht.to_string()!="0: \n1: (10,6) \n2: \n3: \n4: \n") {
             cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht.to_string() << endl;
         }
+        ht.remove(6);
+        if(ht.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht.to_string() << endl;
+        }
+        ht.remove(6); //removing twice
+        if(ht.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht.to_string() << endl;
+        }
+        ht.insert(10, 0);
+        ht.remove(0); //removing at head
+        if(ht.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: \n2: \n3: \n4: \n\nBut got\n\n" << ht.to_string() << endl;
+        }
+        ht.insert(10, 0);
+        ht.insert(10, 4);
+        ht.remove(4); //removing at tail and removing if there is a duplicate value
+        if(ht.to_string()!="0: (10,0) \n1: \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: (10,4) \n1: \n2: \n3: \n4: \n\nBut got\n\n" << ht.to_string() << endl;
+        }
+        ht.remove(-1); //removing negative
+        if(ht.to_string()!="0: (10,0) \n1: \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: (10,4) \n1: \n2: \n3: \n4: \n\nBut got\n\n" << ht.to_string() << endl;
+        }
+
+        HashTable<string> ht_str(5);
+        ht_str.insert("hi", 6);
+        ht_str.remove(5);
+        if(ht_str.to_string()!="0: \n1: (hi,6) \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht_str.to_string() << endl;
+        }
+        ht_str.remove(6);
+        if(ht_str.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht_str.to_string() << endl;
+        }
+        ht_str.remove(6); //removing twice
+        if(ht_str.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht_str.to_string() << endl;
+        }
+        ht_str.insert("cs 1111", 0);
+        ht_str.remove(0); //removing at head
+        if(ht_str.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: \n2: \n3: \n4: \n\nBut got\n\n" << ht_str.to_string() << endl;
+        }
+        ht_str.insert("cs 1111", 0);
+        ht_str.insert("cs 1111", 4);
+        ht_str.remove(4); //removing at tail and removing if there is a duplicate value
+        if(ht_str.to_string()!="0: (cs 1111,0) \n1: \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: (10,4) \n1: \n2: \n3: \n4: \n\nBut got\n\n" << ht_str.to_string() << endl;
+        }
+
+        HashTable<bool> ht_bool(5);
+        ht_bool.insert(true, 6);
+        ht_bool.remove(5);
+        if(ht_bool.to_string()!="0: \n1: (1,6) \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_bool.to_string() << endl;
+        }
+        ht_bool.remove(6);
+        if(ht_bool.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_bool.to_string() << endl;
+        }
+        ht_bool.remove(6); //removing twice
+        if(ht_bool.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_bool.to_string() << endl;
+        }
+        ht_bool.insert(false, 0);
+        ht_bool.remove(0); //removing at head
+        if(ht_bool.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: \n2: \n3: \n4: \n\nBut got\n\n' << ht_bool.to_string() << endl;
+        }
+        ht_bool.insert(false, 0);
+        ht_bool.insert(false, 4);
+        ht_bool.remove(4); //removing at tail and removing if there is a duplicate value
+        if(ht_bool.to_string()!="0: (0,0) \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: (10,4) \n1: \n2: \n3: \n4: \n\nBut got\n\n' << ht_bool.to_string() << endl;
+        }
+
+        HashTable<char> ht_char(5);
+        ht_char.insert('h', 6);
+        ht_char.remove(5);
+        if(ht_char.to_string() != "0: \n1: (h,6) \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_char.to_string() << endl;
+        }
+        ht_char.remove(6);
+        if(ht_char.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_char.to_string() << endl;
+        }
+        ht_char.remove(6); //removing twice
+        if(ht_char.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_char.to_string() << endl;
+        }
+        ht_char.insert('c', 0);
+        ht_char.remove(0); //removing at head
+        if(ht_char.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: \n2: \n3: \n4: \n\nBut got\n\n' << ht_char.to_string() << endl;
+        }
+        ht_char.insert('c', 0);
+        ht_char.insert('c', 4);
+        ht_char.remove(4); //removing at tail and removing if there is a duplicate value
+        if(ht_char.to_string()!="0: (c,0) \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: (10,4) \n1: \n2: \n3: \n4: \n\nBut got\n\n' << ht_char.to_string() << endl;
+        }
+
+        HashTable<float> ht_float(5);
+        ht_float.insert(4.2, 6);
+        ht_float.remove(5);
+        if(ht_float.to_string() != "0: \n1: (4.2,6) \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_float.to_string() << endl;
+        }
+        ht_float.remove(6);
+        if(ht_float.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_float.to_string() << endl;
+        }
+        ht_float.remove(6); //removing twice
+        if(ht_float.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_float.to_string() << endl;
+        }
+        ht_float.insert(6.1, 0);
+        ht_float.remove(0); //removing at head
+        if(ht_float.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: \n2: \n3: \n4: \n\nBut got\n\n' << ht_float.to_string() << endl;
+        }
+        ht_float.insert(6.44, 0);
+        ht_float.insert(6.44, 4);
+        ht_float.remove(4); //removing at tail and removing if there is a duplicate value
+        if(ht_float.to_string()!="0: (6.44,0) \n1: \n2: \n3: \n4: \n") {
+            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: (10,4) \n1: \n2: \n3: \n4: \n\nBut got\n\n' << ht_float.to_string() << endl;
+        }
+
+
+
+
     } catch(exception& e) {
         cerr << "Error removing non-member from table : " << e.what() << endl;
     }
@@ -362,8 +493,95 @@ void test_member() {
     try {
         HashTable<int> ht(5);
         ht.insert(10, 6);
-        if(ht.member(11, 6)){cout << "Incorrect membership in table" << endl;}
-        if(!ht.member(10, 6)){cout << "Incorrect non-membership in table" << endl;}
+        if(ht.member(11, 6)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht.member(10, 6)){cout << "Element in table, but function returned false" << endl;}
+        ht.insert(12, 0);
+        if(ht.member(12, 1)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht.member(12, 2)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht.member(12, 3)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht.member(12, 4)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht.member(12, 5)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht.member(12, 0)){cout << "Element in table, but function returned false" << endl;}
+        ht.insert(12, 1);
+        if(ht.member(12, 2)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht.member(12, 0)){cout << "Element in table, but function returned false" << endl;}
+        if(!ht.member(12, 1)){cout << "Element in table, but function returned false" << endl;}
+        ht.insert(13, 1);
+        ht.insert(17,1);
+        if(ht.member(14, 1)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht.member(13, 1)){cout << "Element in table, but function returned false" << endl;}
+        if(!ht.member(12, 1)){cout << "Element in table, but function returned false" << endl;}
+        if(!ht.member(17, 1)){cout << "Element in table, but function returned false" << endl;}
+        if(ht.member(14, -1)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht.member(13, -2)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht.member(12, -2)){cout << "Element not in table, but function returned true" << endl;}
+
+        HashTable<float> ht2(5);
+        ht2.insert(10.2, 6);
+        if(ht2.member(11.2, 6)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht2.member(10.2, 1)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht2.member(10.2, 6)){cout << "Element in table, but function returned false" << endl;}
+        ht2.insert(12.1, 0);
+        if(ht2.member(12.66, 1)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht2.member(12.1, 0)){cout << "Element in table, but function returned false" << endl;}
+        ht2.insert(12.1, 1);
+        if(ht2.member(12.2, 2)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht2.member(12.1, 0)){cout << "Element in table, but function returned false" << endl;}
+        if(!ht2.member(12.1, 1)){cout << "Element in table, but function returned false" << endl;}
+        ht2.insert(13.4, 1);
+        if(ht2.member(14.22, 1)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht2.member(13.4, 1)){cout << "Element in table, but function returned false" << endl;}
+        if(!ht2.member(12.1, 1)){cout << "Element in table, but function returned false" << endl;}
+
+        HashTable<char> ht_char(5);
+        ht_char.insert('a', 6);
+        if(ht_char.member('b', 6)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht_char.member('a', 6)){cout << "Element in table, but function returned false" << endl;}
+        
+        ht_char.insert('b', 99);
+        if(ht_char.member('b', 1)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht_char.member('b', 99)){cout << "Element in table, but function returned false" << endl;}
+
+        ht_char.insert('b', 1);
+        if(!ht_char.member('b', 99)){cout << "Element in table, but function returned false" << endl;}
+        if(!ht_char.member('b', 1)){cout << "Element in table, but function returned false" << endl;}
+
+        ht_char.insert('c', 0);
+        ht_char.insert('c', 6);
+        ht_char.insert('c', 7);
+        ht_char.insert('c', 8);
+        ht_char.insert('c', 9);
+        ht_char.insert('c', 10);
+        if(ht_char.member('c', 1)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht_char.member('c', 2)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht_char.member('c', 3)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht_char.member('c', 4)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht_char.member('c', 5)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht_char.member('c', 0)){cout << "Element in table, but function returned false" << endl;}
+        if(!ht_char.member('c', 6)){cout << "Element in table, but function returned false" << endl;}
+        if(!ht_char.member('c', 7)){cout << "Element in table, but function returned false" << endl;}
+        if(!ht_char.member('c', 8)){cout << "Element in table, but function returned false" << endl;}
+        if(!ht_char.member('c', 9)){cout << "Element in table, but function returned false" << endl;}
+        if(!ht_char.member('c', 10)){cout << "Element in table, but function returned false" << endl;}
+        if(ht_char.member('c', -1)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht_char.member('c', 9999)){cout << "Element not in table, but function returned true" << endl;}
+
+        HashTable<bool> ht_bool(5);
+        ht_bool.insert(true, 6);
+        if(ht_bool.member(false, 6)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht_bool.member(true, 6)){cout << "Element in table, but function returned false" << endl;}
+        if(ht_bool.member(false, 0)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht_bool.member(false, 1)){cout << "Element not in table, but function returned true" << endl;}
+
+         HashTable<string> ht_str(5);
+        ht_str.insert("cs is cool", 6);
+        if(ht_str.member("cs is not cool", 6)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht_str.member("cs is cool", 6)){cout << "Element in table, but function returned false" << endl;}
+        if(ht_str.member("cs is not cool", 0)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht_str.member("cs is not cool", 1)){cout << "Element not in table, but function returned true" << endl;}
+        
+
+
     } catch(exception& e) {
         cerr << "Error determining membership from table : " << e.what() << endl;
     }
@@ -387,11 +605,13 @@ void test_login() {
         username = "ee";
         password = "";
         if(login(ht, username, password)){cout << "Incorrect result validating blank password information" << endl;}
+        username = 123;
+        password = 333;
+        if(login(ht, username, password)){cout << "Incorrect result validating input type" << endl;}
     } catch(exception& e) {
         cerr << "Error in accomplishing login validation : " << e.what() << endl;
     }
 }
-
 
 int main() {
     test_get_key();
