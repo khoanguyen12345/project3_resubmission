@@ -26,5 +26,7 @@ class HashTable
         bool member(T data, int key);               //check if element is in the hash table
         int h(int k); 
         int h_most_significant(int k);              //hash function
-        string to_string();                         //convert data into string
+        string to_string();
+        void insert_most_significant(T data, int key);                         //convert data into string
+        bool member_most_significant(T data, int key);
 };

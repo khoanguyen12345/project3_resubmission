@@ -235,7 +235,35 @@ int HashTable<T>::h_most_significant(int k) {
         }
         
         result = result.substr(0,5);
-        cout << result;
         return stoi(result);
         }
+}
+
+template <class T>
+void HashTable<T>::insert_most_significant(T data, int key) {
+    int hashVal = h_most_significant(key);                               //get hash value of key 'key'   
+    if (validIndex(hashVal)) {                          //check if the key is valid or not, if not then do nothing, else proceed
+        Element<T>* node = new Element<T>(data, key);   //pointer points to a new element containing inputted data and key value
+        node->next = hashTable[hashVal];                //add the new element to the start of the linked list, connect with the previous first element
+        node->prev = nullptr;                           //set new element's previous pointer to nil
+        hashTable[hashVal]->prev = node;                //previous first element's prev pointer points to newly inserted element
+        hashTable[hashVal] = node;                      //set the hash table's index at hashVal to point to the new element
+    }
+}
+
+template <class T>
+bool HashTable<T>::member_most_significant(T data, int key) {
+    int hashVal = h_most_significant(key);
+    bool ret = false;
+    if (validIndex(hashVal)) {
+        Element<T>* curr = hashTable[hashVal];
+        while (!curr->empty) {
+            if (curr->data == data && curr->key == key) {
+                ret = true;
+                break;
+            }
+            curr = curr->next;
+        }
+    }
+    return ret;
 }
