@@ -28,4 +28,4 @@ usecase.o: usecase.cpp
 	g++ -c $<
 
 clean:
-	rm -f *.o test usecase
+	rm -f *.o test usecase analysis
