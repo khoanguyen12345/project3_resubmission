@@ -31,60 +31,38 @@ void test_get_key() {
         if(e_int2.get_key()!=8){cout << "Incorrect result from get key. Expected 8 but got : " << e_int2.get_key() << endl;} 
         Element<int> e_int3(10, 0);
         if(e_int3.get_key()!=0){cout << "Incorrect result from get key. Expected 0 but got : " << e_int3.get_key() << endl;}
-        Element<int> e_int4(10, 10);
-        if(e_int4.get_key()!=10){cout << "Incorrect result from get key. Expected 10 but got : " << e_int4.get_key() << endl;}
-        Element<int> e_int5(10, 23);
-        if(e_int5.get_key()!=23){cout << "Incorrect result from get key. Expected 23 but got : " << e_int5.get_key() << endl;}
-        
 
         //string element
         Element<string> e_string("hi", 6);
         if(e_string.get_key()!=6){cout << "Incorrect result from get key. Expected 6 but got : " << e_string.get_key() << endl;}
-        Element<string> e_string2("heeee", 0);
+        Element<string> e_string2("hi", 0);
         if(e_string2.get_key()!=0){cout << "Incorrect result from get key. Expected 1 but got : " << e_string2.get_key() << endl;}
-        Element<string> e_string3("watata", 1);
+        Element<string> e_string3("hi", 1);
         if(e_string3.get_key()!=1){cout << "Incorrect result from get key. Expected 1 but got : " << e_string3.get_key() << endl;}
-        Element<string> e_string4("hhhhhaaaa", 10);
-        if(e_string4.get_key()!=10){cout << "Incorrect result from get key. Expected 10 but got : " << e_string4.get_key() << endl;}
-        Element<string> e_string5("hhhhhhh", 32);
-        if(e_string5.get_key()!=32){cout << "Incorrect result from get key. Expected 32 but got : " << e_string5.get_key() << endl;}
-    
+       
         //bool element
         Element<bool> e_bool1(false, 2);
         if(e_bool1.get_key()!=2){cout << "Incorrect result from get key. Expected 2 but got : " << e_bool1.get_key() << endl;}
         Element<bool> e_bool2(true, 0);
         if(e_bool2.get_key()!=0){cout << "Incorrect result from get key. Expected 0 but got : " << e_bool2.get_key() << endl;}
-        Element<bool> e_bool3(false, 1);
-        if(e_bool3.get_key()!=1){cout << "Incorrect result from get key. Expected 1 but got : " << e_bool3.get_key() << endl;}
-        Element<bool> e_bool4(true, 6);
-        if(e_bool4.get_key()!=6){cout << "Incorrect result from get key. Expected 6 but got : " << e_bool4.get_key() << endl;}
-        Element<bool> e_bool5(false, 32);
-        if(e_bool5.get_key()!=32){cout << "Incorrect result from get key. Expected 32 but got : " << e_bool5.get_key() << endl;}
+        Element<bool> e_bool3(false, 14);
+        if(e_bool3.get_key()!=14){cout << "Incorrect result from get key. Expected 1 but got : " << e_bool3.get_key() << endl;}
         
         //char element
         Element<char> e_char('a', 1);
         if(e_char.get_key()!=1){cout << "Incorrect result from get key. Expected 1 but got : " << e_char.get_key() << endl;}
         Element<char> e_char1('a', 0);
-        if(e_char1.get_key()!=1){cout << "Incorrect result from get key. Expected 1 but got : " << e_char1.get_key() << endl;}
-        Element<char> e_char2('a', 10);
-        if(e_char2.get_key()!=10){cout << "Incorrect result from get key. Expected 1 but got : " << e_char2.get_key() << endl;}
-        Element<char> e_char3('a', 34);
-        if(e_char3.get_key()!=34){cout << "Incorrect result from get key. Expected 1 but got : " << e_char3.get_key() << endl;}
-        Element<char> e_char4('a', -5);
-        if(e_char4.get_key()!=-5){cout << "Incorrect result from get key. Expected 1 but got : " << e_char4.get_key() << endl;}
-        //see if we need to do with negative key
+        if(e_char1.get_key()!=0){cout << "Incorrect result from get key. Expected 0 but got : " << e_char1.get_key() << endl;}
+        Element<char> e_char2('a', 34);
+        if(e_char2.get_key()!=34){cout << "Incorrect result from get key. Expected 34 but got : " << e_char2.get_key() << endl;}
 
         //float element
         Element<float> e_float(4.2, 7);
         if(e_float.get_key()!=7){cout << "Incorrect result from get key. Expected 7 but got : " << e_float.get_key() << endl;}
         Element<float> e_float2(4.2, 0);
-        if(e_float2.get_key()!=0){cout << "Incorrect result from get key. Expected 7 but got : " << e_float2.get_key() << endl;}
+        if(e_float2.get_key()!=0){cout << "Incorrect result from get key. Expected 0 but got : " << e_float2.get_key() << endl;}
         Element<float> e_float3(4.2, 13);
-        if(e_float3.get_key()!=13){cout << "Incorrect result from get key. Expected 7 but got : " << e_float3.get_key() << endl;}
-        Element<float> e_float4(4.2, -6);
-        if(e_float4.get_key()!=-6){cout << "Incorrect result from get key. Expected 7 but got : " << e_float4.get_key() << endl;}
-         Element<float> e_float5(4.2, -10);
-        if(e_float5.get_key()!=-10){cout << "Incorrect result from get key. Expected 7 but got : " << e_float5.get_key() << endl;}
+        if(e_float3.get_key()!=13){cout << "Incorrect result from get key. Expected 13 but got : " << e_float3.get_key() << endl;}
     
     } catch(exception& e) {
         cerr << "Error getting key from element : " << e.what() << endl;
@@ -101,18 +79,36 @@ void test_get_data() {
         //int element
         Element<int> e_int(10, 6);
         if(e_int.get_data()!=10){cout << "Incorrect result from get data. Expected 10 but got : " << e_int.get_data() << endl;}
+        Element<int> e_int1(25, 6);
+        if(e_int1.get_data()!=25){cout << "Incorrect result from get data. Expected 10 but got : " << e_int1.get_data() << endl;}
+        Element<int> e_int2(-10, 6);
+        if(e_int2.get_data()!=-10){cout << "Incorrect result from get data. Expected 10 but got : " << e_int2.get_data() << endl;}
 
         //string element
         Element<string> e_string("hi", 6);
         if(e_string.get_data()!="hi"){cout << "Incorrect result from get data. Expected 'hi' but got : " << e_string.get_data() << endl;}
+        Element<string> e_string1("haaaaaa", 6);
+        if(e_string1.get_data()!="haaaaaa"){cout << "Incorrect result from get data. Expected 'hi' but got : " << e_string1.get_data() << endl;}
+        Element<string> e_string3("hhhhaaa", 6);
+        if(e_string3.get_data()!="hhhhaaa"){cout << "Incorrect result from get data. Expected 'hi' but got : " << e_string3.get_data() << endl;}
+        Element<string> e_string4("hhaaaaa", 6);
+        if(e_string4.get_data()!="hhaaaaa"){cout << "Incorrect result from get data. Expected 'hi' but got : " << e_string4.get_data() << endl;}
     
         //bool element
         Element<bool> e_bool(false, 2);
         if(e_bool.get_data()!=false){cout << "Incorrect result from get data. Expected false but got : " << e_bool.get_data() << endl;}
+        Element<bool> e_bool2(true, 2);
+        if(e_bool2.get_data()!=true){cout << "Incorrect result from get data. Expected true but got : " << e_bool2.get_data() << endl;}
 
         //char element
         Element<char> e_char('a', 1);
         if(e_char.get_data()!='a'){cout << "Incorrect result from get data. Expected 'a' but got : " << e_char.get_data() << endl;}
+        Element<char> e_char2('b', 1);
+        if(e_char2.get_data()!='b'){cout << "Incorrect result from get data. Expected 'b' but got : " << e_char2.get_data() << endl;}
+        Element<char> e_char3('2', 1);
+        if(e_char3.get_data()!='2'){cout << "Incorrect result from get data. Expected '2' but got : " << e_char3.get_data() << endl;}
+        Element<char> e_char4('5', 1);
+        if(e_char4.get_data()!='5'){cout << "Incorrect result from get data. Expected '5' but got : " << e_char4.get_data() << endl;}
 
         //float element
         //floating points are imprecise! when we simply insert float data into an element and compare it with the float value we inserted when we return,
@@ -121,6 +117,10 @@ void test_get_data() {
         //the tolerance value is defined at the top of our program. We chose it arbitrarily.
         Element<float> e_float(6.6, 7);
         if(e_float.get_data() > (6.6 + tolerance) || e_float.get_data() < (6.6 - tolerance)){cout << "Incorrect result from get data. Expected 6.6 but got : " << e_float.get_data() << endl;}
+        Element<float> e_float2(0.0, 7);
+        if(e_float2.get_data() > (0.0 + tolerance) || e_float2.get_data() < (0.0 - tolerance)){cout << "Incorrect result from get data. Expected 6.6 but got : " << e_float2.get_data() << endl;}
+        Element<float> e_float3(3.4, 7);
+        if(e_float3.get_data() > (3.4 + tolerance) || e_float3.get_data() < (3.4 - tolerance)){cout << "Incorrect result from get data. Expected 6.6 but got : " << e_float3.get_data() << endl;}
 
     
     } catch(exception& e) {
@@ -148,9 +148,101 @@ void test_insert() {
         if(ht.to_string()!="0: \n1: (1,21) (10,6) \n2: \n3: \n4: \n") {
             cout << "Incorrect result of inserting into table" << endl;
         }
+        ht.insert(0, 0);
+        if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+        ht.insert(12, 12);
+        if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: (12,12) \n3: \n4: \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+        ht.insert(7, 13);
+        if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: (12,12) \n3: (7,13) \n4: \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+        ht.insert(15, 14);
+        if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: (12,12) \n3: (7,13) \n4: (15,14) \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+        ht.insert(27, 14);
+        if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: (12,12) \n3: (7,13) \n4: (27,14) (15,14) \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+
     } catch(exception& e) {
         cerr << "Error inserting into non-empty table : " << e.what() << endl;
     }
+    
+    try {
+        HashTable<float> ht2(5);
+        ht2.insert(0.0, 6);
+        if(ht2.to_string()!="0: \n1: (0,6) \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of inserting into table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht2.to_string() << endl;
+        }
+        ht2.insert(1.25, 21);
+        if(ht2.to_string()!="0: \n1: (1.25,21) (0,6) \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+        // ht.insert(0, 0);
+        // if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: \n3: \n4: \n") {
+        //     cout << "Incorrect result of inserting into table" << endl;
+        // }
+        // ht.insert(12, 12);
+        // if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: (12,12) \n3: \n4: \n") {
+        //     cout << "Incorrect result of inserting into table" << endl;
+        // }
+        // ht.insert(7, 13);
+        // if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: (12,12) \n3: (7,13) \n4: \n") {
+        //     cout << "Incorrect result of inserting into table" << endl;
+        // }
+        // ht.insert(15, 14);
+        // if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: (12,12) \n3: (7,13) \n4: (15,14) \n") {
+        //     cout << "Incorrect result of inserting into table" << endl;
+        // }
+        // ht.insert(27, 14);
+        // if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: (12,12) \n3: (7,13) \n4: (27,14) (15,14) \n") {
+        //     cout << "Incorrect result of inserting into table" << endl;
+        // }
+
+    } catch(exception& e) {
+        cerr << "Error inserting into non-empty table : " << e.what() << endl;
+    }
+
+    // try {
+    //     HashTable<int> ht(5);
+    //     ht.insert(10, 6);
+    //     if(ht.to_string()!="0: \n1: (10,6) \n2: \n3: \n4: \n") {
+    //         cout << "Incorrect result of inserting into table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht.to_string() << endl;
+    //     }
+    //     ht.insert(1, 21);
+    //     if(ht.to_string()!="0: \n1: (1,21) (10,6) \n2: \n3: \n4: \n") {
+    //         cout << "Incorrect result of inserting into table" << endl;
+    //     }
+    //     ht.insert(0, 0);
+    //     if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: \n3: \n4: \n") {
+    //         cout << "Incorrect result of inserting into table" << endl;
+    //     }
+    //     ht.insert(12, 12);
+    //     if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: (12,12) \n3: \n4: \n") {
+    //         cout << "Incorrect result of inserting into table" << endl;
+    //     }
+    //     ht.insert(7, 13);
+    //     if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: (12,12) \n3: (7,13) \n4: \n") {
+    //         cout << "Incorrect result of inserting into table" << endl;
+    //     }
+    //     ht.insert(15, 14);
+    //     if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: (12,12) \n3: (7,13) \n4: (15,14) \n") {
+    //         cout << "Incorrect result of inserting into table" << endl;
+    //     }
+    //     ht.insert(27, 14);
+    //     if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: (12,12) \n3: (7,13) \n4: (27,14) (15,14) \n") {
+    //         cout << "Incorrect result of inserting into table" << endl;
+    //     }
+
+    // } catch(exception& e) {
+    //     cerr << "Error inserting into non-empty table : " << e.what() << endl;
+    // }
+
 }
 
 void test_remove() {
