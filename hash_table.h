@@ -13,10 +13,7 @@ using namespace std;
 
 template <class T> 
 class HashTable
-{
-    private:
-        Element<T>** hashTable;
-        int size;                 
+{                 
     public:
         HashTable();                                //default constructor
         HashTable(int len);                         //constructor initialize hash table with 'len' slots
@@ -34,4 +31,7 @@ class HashTable
         void insert_cormen_multiplication(T data, int key);                         
         bool member_cormen_multiplication(T data, int key);
         string to_string();                         //convert data into string
+
+        Element<T>** hashTable;
+        int size;
 };
