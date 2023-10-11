@@ -1,3 +1,10 @@
+// ================================================
+// main.cpp
+// Author: Niranjan Reji, Khoa Nguyen, Phuc Nguyen
+// Date: 10-02-2023
+// Last Update: 10-11-2023
+// ================================================
+
 #include "element.cpp"
 #include "hash_table.cpp"
 #include "usecase.cpp"
