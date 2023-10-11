@@ -341,6 +341,7 @@ void HashTable<T>::insert_cormen_multiplication(T data, int key) {
 
 // ================================================
 // loadFactor
+// Retrieve load factor of the hash table
 // Pre-conditions: called on valid Hash Table object with non zero size
 // Post-conditions: returns average load factor for hash table object
 // Parameter: None
@@ -350,14 +351,14 @@ void HashTable<T>::insert_cormen_multiplication(T data, int key) {
 template <class T>
 float HashTable<T>::loadFactor() {
     float ret = 0.0;
-    if (size == 0) return 0;
-    for (int i = 0; i < size; i++) {
+    if (size == 0) return 0;                        //if hash table empty then return 0
+    for (int i = 0; i < size; i++) {                //traverse through elements in the hash table
         Element<T>* curr = hashTable[i];
-        while (!curr->empty) {
+        while (!curr->empty) {                      //go through linked list of the current key
             ret = ret + 1;
             curr = curr->next;
         }
     }
-    ret = ret/size;
+    ret = ret/size;                                 //get the load factor
     return ret;
 }
