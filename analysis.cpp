@@ -42,9 +42,10 @@ void test(int numbers[],int array_size){
 }
 
 int main(){
+    srand (time(NULL));
     int numbers[100001];
     for(int i = 0; i <= 100000; i++){
-    numbers[i] = i* (rand() % 100);
+    numbers[i] = i* (rand() % 100 + 1 );
     }
     test(numbers,100001);
 }
