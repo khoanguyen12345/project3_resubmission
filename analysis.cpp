@@ -14,6 +14,22 @@ int sizeList(Element<int> x){
     return counter;
 }
 
+int h_most_significant(int k) {
+//most significant bit hash function
+        int no_bits = floor(log2(k)) +1;
+        int space = size;
+        while (log2(space) != floor(log2(space))) {
+            space--;
+        }
+        int shifts = log2(space);
+        
+        while (floor(log2(k)) + 1 >= shifts) {
+            k = k >> shifts;
+        }
+        cout << k << " ";
+        return k;
+}
+
 void test(int numbers[],int array_size){
     int load_factor;
     int ht_size = 5;
