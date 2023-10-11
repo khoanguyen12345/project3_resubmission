@@ -153,8 +153,95 @@ void test_member() {
     try {
         HashTable<int> ht(5);
         ht.insert(10, 6);
-        if(ht.member(11, 6)){cout << "Incorrect membership in table" << endl;}
-        if(!ht.member(10, 6)){cout << "Incorrect non-membership in table" << endl;}
+        if(ht.member(11, 6)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht.member(10, 6)){cout << "Element in table, but function returned false" << endl;}
+        ht.insert(12, 0);
+        if(ht.member(12, 1)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht.member(12, 2)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht.member(12, 3)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht.member(12, 4)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht.member(12, 5)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht.member(12, 0)){cout << "Element in table, but function returned false" << endl;}
+        ht.insert(12, 1);
+        if(ht.member(12, 2)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht.member(12, 0)){cout << "Element in table, but function returned false" << endl;}
+        if(!ht.member(12, 1)){cout << "Element in table, but function returned false" << endl;}
+        ht.insert(13, 1);
+        ht.insert(17,1);
+        if(ht.member(14, 1)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht.member(13, 1)){cout << "Element in table, but function returned false" << endl;}
+        if(!ht.member(12, 1)){cout << "Element in table, but function returned false" << endl;}
+        if(!ht.member(17, 1)){cout << "Element in table, but function returned false" << endl;}
+        if(ht.member(14, -1)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht.member(13, -2)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht.member(12, -2)){cout << "Element not in table, but function returned true" << endl;}
+
+        HashTable<float> ht2(5);
+        ht2.insert(10.2, 6);
+        if(ht2.member(11.2, 6)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht2.member(10.2, 1)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht2.member(10.2, 6)){cout << "Element in table, but function returned false" << endl;}
+        ht2.insert(12.1, 0);
+        if(ht2.member(12.66, 1)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht2.member(12.1, 0)){cout << "Element in table, but function returned false" << endl;}
+        ht2.insert(12.1, 1);
+        if(ht2.member(12.2, 2)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht2.member(12.1, 0)){cout << "Element in table, but function returned false" << endl;}
+        if(!ht2.member(12.1, 1)){cout << "Element in table, but function returned false" << endl;}
+        ht2.insert(13.4, 1);
+        if(ht2.member(14.22, 1)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht2.member(13.4, 1)){cout << "Element in table, but function returned false" << endl;}
+        if(!ht2.member(12.1, 1)){cout << "Element in table, but function returned false" << endl;}
+
+        HashTable<char> ht_char(5);
+        ht_char.insert('a', 6);
+        if(ht_char.member('b', 6)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht_char.member('a', 6)){cout << "Element in table, but function returned false" << endl;}
+        
+        ht_char.insert('b', 99);
+        if(ht_char.member('b', 1)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht_char.member('b', 99)){cout << "Element in table, but function returned false" << endl;}
+
+        ht_char.insert('b', 1);
+        if(!ht_char.member('b', 99)){cout << "Element in table, but function returned false" << endl;}
+        if(!ht_char.member('b', 1)){cout << "Element in table, but function returned false" << endl;}
+
+        ht_char.insert('c', 0);
+        ht_char.insert('c', 6);
+        ht_char.insert('c', 7);
+        ht_char.insert('c', 8);
+        ht_char.insert('c', 9);
+        ht_char.insert('c', 10);
+        if(ht_char.member('c', 1)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht_char.member('c', 2)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht_char.member('c', 3)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht_char.member('c', 4)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht_char.member('c', 5)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht_char.member('c', 0)){cout << "Element in table, but function returned false" << endl;}
+        if(!ht_char.member('c', 6)){cout << "Element in table, but function returned false" << endl;}
+        if(!ht_char.member('c', 7)){cout << "Element in table, but function returned false" << endl;}
+        if(!ht_char.member('c', 8)){cout << "Element in table, but function returned false" << endl;}
+        if(!ht_char.member('c', 9)){cout << "Element in table, but function returned false" << endl;}
+        if(!ht_char.member('c', 10)){cout << "Element in table, but function returned false" << endl;}
+        if(ht_char.member('c', -1)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht_char.member('c', 9999)){cout << "Element not in table, but function returned true" << endl;}
+
+        HashTable<bool> ht_bool(5);
+        ht_bool.insert(true, 6);
+        if(ht_bool.member(false, 6)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht_bool.member(true, 6)){cout << "Element in table, but function returned false" << endl;}
+        if(ht_bool.member(false, 0)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht_bool.member(false, 1)){cout << "Element not in table, but function returned true" << endl;}
+
+         HashTable<string> ht_str(5);
+        ht_str.insert("cs is cool", 6);
+        if(ht_str.member("cs is not cool", 6)){cout << "Element not in table, but function returned true" << endl;}
+        if(!ht_str.member("cs is cool", 6)){cout << "Element in table, but function returned false" << endl;}
+        if(ht_str.member("cs is not cool", 0)){cout << "Element not in table, but function returned true" << endl;}
+        if(ht_str.member("cs is not cool", 1)){cout << "Element not in table, but function returned true" << endl;}
+        
+
+
     } catch(exception& e) {
         cerr << "Error determining membership from table : " << e.what() << endl;
     }
@@ -182,7 +269,6 @@ void test_login() {
         cerr << "Error in accomplishing login validation : " << e.what() << endl;
     }
 }
-
 
 int main() {
     test_get_key();
