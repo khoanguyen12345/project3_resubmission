@@ -36,7 +36,7 @@ void test_get_key() {
         Element<string> e_string("hi", 6);
         if(e_string.get_key()!=6){cout << "Incorrect result from get key. Expected 6 but got : " << e_string.get_key() << endl;}
         Element<string> e_string2("hi", 0);
-        if(e_string2.get_key()!=0){cout << "Incorrect result from get key. Expected 1 but got : " << e_string2.get_key() << endl;}
+        if(e_string2.get_key()!=0){cout << "Incorrect result from get key. Expected 0 but got : " << e_string2.get_key() << endl;}
         Element<string> e_string3("hi", 1);
         if(e_string3.get_key()!=1){cout << "Incorrect result from get key. Expected 1 but got : " << e_string3.get_key() << endl;}
        
@@ -72,9 +72,13 @@ void test_get_key() {
 
 void test_get_data() {
     try {
-         //empty element
+         //empty elements for all types
         Element<int> e;
         if(e.get_data()!=0){cout << "Incorrect result from get data. Expected 0 but got : " << e.get_data() << endl;}
+        Element<bool> g;
+        if(g.get_data()!=false){cout << "Incorrect result from get data. Expected false but got : " << g.get_data() << endl;}
+        Element<float> h;
+        if(h.get_data()!=0.0){cout << "Incorrect result from get data. Expected 0.0 but got : " << h.get_data() << endl;}
         
         //int element
         Element<int> e_int(10, 6);
@@ -88,11 +92,7 @@ void test_get_data() {
         Element<string> e_string("hi", 6);
         if(e_string.get_data()!="hi"){cout << "Incorrect result from get data. Expected 'hi' but got : " << e_string.get_data() << endl;}
         Element<string> e_string1("haaaaaa", 6);
-        if(e_string1.get_data()!="haaaaaa"){cout << "Incorrect result from get data. Expected 'hi' but got : " << e_string1.get_data() << endl;}
-        Element<string> e_string3("hhhhaaa", 6);
-        if(e_string3.get_data()!="hhhhaaa"){cout << "Incorrect result from get data. Expected 'hi' but got : " << e_string3.get_data() << endl;}
-        Element<string> e_string4("hhaaaaa", 6);
-        if(e_string4.get_data()!="hhaaaaa"){cout << "Incorrect result from get data. Expected 'hi' but got : " << e_string4.get_data() << endl;}
+        if(e_string1.get_data()!="haaaaaa"){cout << "Incorrect result from get data. Expected 'haaaaaa' but got : " << e_string1.get_data() << endl;}
     
         //bool element
         Element<bool> e_bool(false, 2);
@@ -172,77 +172,152 @@ void test_insert() {
     } catch(exception& e) {
         cerr << "Error inserting into non-empty table : " << e.what() << endl;
     }
-    
-    try {
-        HashTable<float> ht2(5);
-        ht2.insert(0.0, 6);
-        if(ht2.to_string()!="0: \n1: (0,6) \n2: \n3: \n4: \n") {
-            cout << "Incorrect result of inserting into table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht2.to_string() << endl;
-        }
-        ht2.insert(1.25, 21);
-        if(ht2.to_string()!="0: \n1: (1.25,21) (0,6) \n2: \n3: \n4: \n") {
-            cout << "Incorrect result of inserting into table" << endl;
-        }
-        // ht.insert(0, 0);
-        // if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: \n3: \n4: \n") {
-        //     cout << "Incorrect result of inserting into table" << endl;
-        // }
-        // ht.insert(12, 12);
-        // if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: (12,12) \n3: \n4: \n") {
-        //     cout << "Incorrect result of inserting into table" << endl;
-        // }
-        // ht.insert(7, 13);
-        // if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: (12,12) \n3: (7,13) \n4: \n") {
-        //     cout << "Incorrect result of inserting into table" << endl;
-        // }
-        // ht.insert(15, 14);
-        // if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: (12,12) \n3: (7,13) \n4: (15,14) \n") {
-        //     cout << "Incorrect result of inserting into table" << endl;
-        // }
-        // ht.insert(27, 14);
-        // if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: (12,12) \n3: (7,13) \n4: (27,14) (15,14) \n") {
-        //     cout << "Incorrect result of inserting into table" << endl;
-        // }
-
-    } catch(exception& e) {
-        cerr << "Error inserting into non-empty table : " << e.what() << endl;
-    }
 
     // try {
-    //     HashTable<int> ht(5);
-    //     ht.insert(10, 6);
-    //     if(ht.to_string()!="0: \n1: (10,6) \n2: \n3: \n4: \n") {
-    //         cout << "Incorrect result of inserting into table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht.to_string() << endl;
+    //     HashTable<string> ht2(5);
+    //     ht2.insert("hi", 6);
+    //     if(ht2.to_string()!="0: \n1: (hi,6) \n2: \n3: \n4: \n\nBut got\n\n") {
+    //         cout << "Incorrect result of inserting into table. Expected\n\n0: \n1: (hi,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht2.to_string() << endl;
     //     }
-    //     ht.insert(1, 21);
-    //     if(ht.to_string()!="0: \n1: (1,21) (10,6) \n2: \n3: \n4: \n") {
-    //         cout << "Incorrect result of inserting into table" << endl;
-    //     }
-    //     ht.insert(0, 0);
-    //     if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: \n3: \n4: \n") {
-    //         cout << "Incorrect result of inserting into table" << endl;
-    //     }
-    //     ht.insert(12, 12);
-    //     if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: (12,12) \n3: \n4: \n") {
-    //         cout << "Incorrect result of inserting into table" << endl;
-    //     }
-    //     ht.insert(7, 13);
-    //     if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: (12,12) \n3: (7,13) \n4: \n") {
-    //         cout << "Incorrect result of inserting into table" << endl;
-    //     }
-    //     ht.insert(15, 14);
-    //     if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: (12,12) \n3: (7,13) \n4: (15,14) \n") {
-    //         cout << "Incorrect result of inserting into table" << endl;
-    //     }
-    //     ht.insert(27, 14);
-    //     if(ht.to_string()!="0: (0,0) \n1: (1,21) (10,6) \n2: (12,12) \n3: (7,13) \n4: (27,14) (15,14) \n") {
-    //         cout << "Incorrect result of inserting into table" << endl;
-    //     }
+        // ht2.insert(1, 21);
+        // if(ht2.to_string()!="") {
+        //     cout << "Incorrect result of inserting into table" << endl;
+        // }
+        // ht2.insert(0, 0);
+        // if(ht2.to_string()!="") {
+        //     cout << "Incorrect result of inserting into table" << endl;
+        // }
+        // ht2.insert(12, 12);
+        // if(ht2.to_string()!="") {
+        //     cout << "Incorrect result of inserting into table" << endl;
+        // }
+        // ht2.insert(7, 13);
+        // if(ht2.to_string()!="") {
+        //     cout << "Incorrect result of inserting into table" << endl;
+        // }
+        // ht2.insert(15, 14);
+        // if(ht2.to_string()!="") {
+        //     cout << "Incorrect result of inserting into table" << endl;
+        // }
+        // ht2.insert(27, 14);
+        // if(ht2.to_string()!="") {
+        //     cout << "Incorrect result of inserting into table" << endl;
+        // } 
 
     // } catch(exception& e) {
     //     cerr << "Error inserting into non-empty table : " << e.what() << endl;
     // }
 
+    try {
+        HashTable<char> ht3(5);
+        ht3.insert('a', 0);
+        if(ht3.to_string()!="0: (a,0) \n1: \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of inserting into table. Expected\n\n0: \n1: (a,0) \n2: \n3: \n4: \n\nBut got\n\n" << ht3.to_string() << endl;
+        }
+        ht3.insert('a', 10);
+        if(ht3.to_string()!="0: (a,10) (a,0) \n1: \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+
+        ht3.insert('b', 3);
+        if(ht3.to_string()!="0: (a,10) (a,0) \n1: \n2: \n3: (b,3) \n4: \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+
+        ht3.insert('c', 13);
+        if(ht3.to_string()!="0: (a,10) (a,0) \n1: \n2: \n3: (c,13) (b,3) \n4: \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+
+        ht3.insert('d', 4);
+        if(ht3.to_string()!="0: (a,10) (a,0) \n1: \n2: \n3: (c,13) (b,3) \n4: (d,4) \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+
+        ht3.insert('3', 2);
+        if(ht3.to_string()!="0: (a,10) (a,0) \n1: \n2: (3,2) \n3: (c,13) (b,3) \n4: (d,4) \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+
+        ht3.insert('0', 1);
+        if(ht3.to_string()!="0: (a,10) (a,0) \n1: (0,1) \n2: (3,2) \n3: (c,13) (b,3) \n4: (d,4) \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+
+    } catch(exception& e) {
+        cerr << "Error inserting into non-empty table : " << e.what() << endl;
+    }
+    
+    try {
+        HashTable<bool> ht4(5);
+        ht4.insert(true, 0);
+        if(ht4.to_string()!="0: (1,0) \n1: \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of inserting into table. Expected\n\n0: (1,0) \n1: \n2: \n3: \n4: \n\nBut got\n\n" << ht4.to_string() << endl;
+        }
+        ht4.insert(true, 10);
+        if(ht4.to_string()!="0: (1,10) (1,0) \n1: \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+
+        ht4.insert(false, 3);
+        if(ht4.to_string()!="0: (1,10) (1,0) \n1: \n2: \n3: (0,3) \n4: \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+        ht4.insert(false, 13);
+        if(ht4.to_string()!="0: (1,10) (1,0) \n1: \n2: \n3: (0,13) (0,3) \n4: \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+        ht4.insert(true, 4);
+        if(ht4.to_string()!="0: (1,10) (1,0) \n1: \n2: \n3: (0,13) (0,3) \n4: (1,4) \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+        ht4.insert(true, 2);
+        if(ht4.to_string()!="0: (1,10) (1,0) \n1: \n2: (1,2) \n3: (0,13) (0,3) \n4: (1,4) \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+        ht4.insert(false, 1);
+        if(ht4.to_string()!="0: (1,10) (1,0) \n1: (0,1) \n2: (1,2) \n3: (0,13) (0,3) \n4: (1,4) \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+    } catch(exception& e) {
+        cerr << "Error inserting into non-empty table : " << e.what() << endl;
+    }
+
+    try {
+        HashTable<float> ht5(5);
+        ht5.insert(1.25, 21);
+        if(ht5.to_string()!="0: \n1: (1.25,21) \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of inserting into table. Expected\n\n0: \n1: (1.25,21) \n2: \n3: \n4: \n\nBut got\n\n" << ht5.to_string() << endl;
+        }
+        ht5.insert(1.5, 6);
+        if(ht5.to_string()!="0: \n1: (1.5,6) (1.25,21) \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+        ht5.insert(0.5, 10);
+        if(ht5.to_string()!="0: (0.5,10) \n1: (1.5,6) (1.25,21) \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+        ht5.insert(0.0, 0);
+        if(ht5.to_string()!="0: (0,0) (0.5,10) \n1: (1.5,6) (1.25,21) \n2: \n3: \n4: \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+        ht5.insert(19.25, 13);
+        if(ht5.to_string()!="0: (0,0) (0.5,10) \n1: (1.5,6) (1.25,21) \n2: \n3: (19.25,13) \n4: \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+        ht5.insert(2.75, 14);
+        if(ht5.to_string()!="0: (0,0) (0.5,10) \n1: (1.5,6) (1.25,21) \n2: \n3: (19.25,13) \n4: (2.75,14) \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+
+        ht5.insert(3.75, 24);
+        if(ht5.to_string()!="0: (0,0) (0.5,10) \n1: (1.5,6) (1.25,21) \n2: \n3: (19.25,13) \n4: (3.75,24) (2.75,14) \n") {
+            cout << "Incorrect result of inserting into table" << endl;
+        }
+
+    } catch(exception& e) {
+        cerr << "Error inserting into non-empty table : " << e.what() << endl;
+    }
 }
 
 void test_remove() {
