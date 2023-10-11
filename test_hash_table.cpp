@@ -395,78 +395,78 @@ void test_remove() {
         ht_bool.insert(true, 6);
         ht_bool.remove(5);
         if(ht_bool.to_string()!="0: \n1: (1,6) \n2: \n3: \n4: \n") {
-            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (1,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_bool.to_string() << endl;
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: (1,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht_bool.to_string() << endl;
         }
         ht_bool.remove(6);
         if(ht_bool.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
-            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_bool.to_string() << endl;
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht_bool.to_string() << endl;
         }
         ht_bool.remove(6); //removing twice
         if(ht_bool.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
-            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_bool.to_string() << endl;
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht_bool.to_string() << endl;
         }
         ht_bool.insert(false, 0);
         ht_bool.remove(0); //removing at head
         if(ht_bool.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
-            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: \n2: \n3: \n4: \n\nBut got\n\n' << ht_bool.to_string() << endl;
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: \n2: \n3: \n4: \n\nBut got\n\n" << ht_bool.to_string() << endl;
         }
         ht_bool.insert(false, 0);
         ht_bool.insert(false, 4);
         ht_bool.remove(4); //removing at tail and removing if there is a duplicate value
         if(ht_bool.to_string()!="0: (0,0) \n1: \n2: \n3: \n4: \n") {
-            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: (10,4) \n1: \n2: \n3: \n4: \n\nBut got\n\n' << ht_bool.to_string() << endl;
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: (10,4) \n1: \n2: \n3: \n4: \n\nBut got\n\n" << ht_bool.to_string() << endl;
         }
 
         HashTable<char> ht_char(5);
         ht_char.insert('h', 6);
         ht_char.remove(5);
         if(ht_char.to_string() != "0: \n1: (h,6) \n2: \n3: \n4: \n") {
-            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_char.to_string() << endl;
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht_char.to_string() << endl;
         }
         ht_char.remove(6);
         if(ht_char.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
-            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_char.to_string() << endl;
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht_char.to_string() << endl;
         }
         ht_char.remove(6); //removing twice
         if(ht_char.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
-            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_char.to_string() << endl;
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht_char.to_string() << endl;
         }
         ht_char.insert('c', 0);
         ht_char.remove(0); //removing at head
         if(ht_char.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
-            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: \n2: \n3: \n4: \n\nBut got\n\n' << ht_char.to_string() << endl;
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: \n2: \n3: \n4: \n\nBut got\n\n" << ht_char.to_string() << endl;
         }
         ht_char.insert('c', 0);
         ht_char.insert('c', 4);
         ht_char.remove(4); //removing at tail and removing if there is a duplicate value
         if(ht_char.to_string()!="0: (c,0) \n1: \n2: \n3: \n4: \n") {
-            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: (10,4) \n1: \n2: \n3: \n4: \n\nBut got\n\n' << ht_char.to_string() << endl;
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: (10,4) \n1: \n2: \n3: \n4: \n\nBut got\n\n" << ht_char.to_string() << endl;
         }
 
         HashTable<float> ht_float(5);
         ht_float.insert(4.2, 6);
         ht_float.remove(5);
         if(ht_float.to_string() != "0: \n1: (4.2,6) \n2: \n3: \n4: \n") {
-            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_float.to_string() << endl;
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht_float.to_string() << endl;
         }
         ht_float.remove(6);
         if(ht_float.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
-            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_float.to_string() << endl;
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht_float.to_string() << endl;
         }
         ht_float.remove(6); //removing twice
         if(ht_float.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
-            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n' << ht_float.to_string() << endl;
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: (10,6) \n2: \n3: \n4: \n\nBut got\n\n" << ht_float.to_string() << endl;
         }
         ht_float.insert(6.1, 0);
         ht_float.remove(0); //removing at head
         if(ht_float.to_string()!="0: \n1: \n2: \n3: \n4: \n") {
-            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: \n1: \n2: \n3: \n4: \n\nBut got\n\n' << ht_float.to_string() << endl;
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: \n1: \n2: \n3: \n4: \n\nBut got\n\n" << ht_float.to_string() << endl;
         }
         ht_float.insert(6.44, 0);
         ht_float.insert(6.44, 4);
         ht_float.remove(4); //removing at tail and removing if there is a duplicate value
         if(ht_float.to_string()!="0: (6.44,0) \n1: \n2: \n3: \n4: \n") {
-            cout << 'Incorrect result of removing non-member from table. Expected\n\n0: (10,4) \n1: \n2: \n3: \n4: \n\nBut got\n\n' << ht_float.to_string() << endl;
+            cout << "Incorrect result of removing non-member from table. Expected\n\n0: (10,4) \n1: \n2: \n3: \n4: \n\nBut got\n\n" << ht_float.to_string() << endl;
         }
 
 
@@ -610,8 +610,8 @@ void test_login() {
         password = "";
         if(login(ht, username, password)){cout << "Incorrect result validating blank password information" << endl;}
         username = "123";
-        int password = 333;
-        if(login(ht, username, password)){cout << "Incorrect result validating input type" << endl;}
+        // int password2 = 333;
+        // if(login(ht, username, password2)){cout << "Incorrect result validating input type" << endl;}
     } catch(exception& e) {
         cerr << "Error in accomplishing login validation : " << e.what() << endl;
     }
