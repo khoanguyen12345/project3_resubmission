@@ -12,6 +12,7 @@
 #include "hash_table.h"
 #include "element.h"
 #include <string>
+#include <math.h>
 using namespace std;
 
 // ================================================

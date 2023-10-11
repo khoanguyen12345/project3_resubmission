@@ -26,23 +26,65 @@ void test_get_key() {
 
         //int element
         Element<int> e_int(10, 6);
-         if(e_int.get_key()!=6){cout << "Incorrect result from get key. Expected 6 but got : " << e_int.get_key() << endl;}
+        if(e_int.get_key()!=6){cout << "Incorrect result from get key. Expected 6 but got : " << e_int.get_key() << endl;}
+        Element<int> e_int2(10, 8);
+        if(e_int2.get_key()!=8){cout << "Incorrect result from get key. Expected 8 but got : " << e_int2.get_key() << endl;} 
+        Element<int> e_int3(10, 0);
+        if(e_int3.get_key()!=0){cout << "Incorrect result from get key. Expected 0 but got : " << e_int3.get_key() << endl;}
+        Element<int> e_int4(10, 10);
+        if(e_int4.get_key()!=10){cout << "Incorrect result from get key. Expected 10 but got : " << e_int4.get_key() << endl;}
+        Element<int> e_int5(10, 23);
+        if(e_int5.get_key()!=23){cout << "Incorrect result from get key. Expected 23 but got : " << e_int5.get_key() << endl;}
+        
 
         //string element
         Element<string> e_string("hi", 6);
         if(e_string.get_key()!=6){cout << "Incorrect result from get key. Expected 6 but got : " << e_string.get_key() << endl;}
+        Element<string> e_string2("heeee", 0);
+        if(e_string2.get_key()!=0){cout << "Incorrect result from get key. Expected 1 but got : " << e_string2.get_key() << endl;}
+        Element<string> e_string3("watata", 1);
+        if(e_string3.get_key()!=1){cout << "Incorrect result from get key. Expected 1 but got : " << e_string3.get_key() << endl;}
+        Element<string> e_string4("hhhhhaaaa", 10);
+        if(e_string4.get_key()!=10){cout << "Incorrect result from get key. Expected 10 but got : " << e_string4.get_key() << endl;}
+        Element<string> e_string5("hhhhhhh", 32);
+        if(e_string5.get_key()!=32){cout << "Incorrect result from get key. Expected 32 but got : " << e_string5.get_key() << endl;}
     
         //bool element
-        Element<bool> e_bool(false, 2);
-        if(e_bool.get_key()!=2){cout << "Incorrect result from get key. Expected 2 but got : " << e_bool.get_key() << endl;}
-
+        Element<bool> e_bool1(false, 2);
+        if(e_bool1.get_key()!=2){cout << "Incorrect result from get key. Expected 2 but got : " << e_bool1.get_key() << endl;}
+        Element<bool> e_bool2(true, 0);
+        if(e_bool2.get_key()!=0){cout << "Incorrect result from get key. Expected 0 but got : " << e_bool2.get_key() << endl;}
+        Element<bool> e_bool3(false, 1);
+        if(e_bool3.get_key()!=1){cout << "Incorrect result from get key. Expected 1 but got : " << e_bool3.get_key() << endl;}
+        Element<bool> e_bool4(true, 6);
+        if(e_bool4.get_key()!=6){cout << "Incorrect result from get key. Expected 6 but got : " << e_bool4.get_key() << endl;}
+        Element<bool> e_bool5(false, 32);
+        if(e_bool5.get_key()!=32){cout << "Incorrect result from get key. Expected 32 but got : " << e_bool5.get_key() << endl;}
+        
         //char element
         Element<char> e_char('a', 1);
         if(e_char.get_key()!=1){cout << "Incorrect result from get key. Expected 1 but got : " << e_char.get_key() << endl;}
+        Element<char> e_char1('a', 0);
+        if(e_char1.get_key()!=1){cout << "Incorrect result from get key. Expected 1 but got : " << e_char1.get_key() << endl;}
+        Element<char> e_char2('a', 10);
+        if(e_char2.get_key()!=10){cout << "Incorrect result from get key. Expected 1 but got : " << e_char2.get_key() << endl;}
+        Element<char> e_char3('a', 34);
+        if(e_char3.get_key()!=34){cout << "Incorrect result from get key. Expected 1 but got : " << e_char3.get_key() << endl;}
+        Element<char> e_char4('a', -5);
+        if(e_char4.get_key()!=-5){cout << "Incorrect result from get key. Expected 1 but got : " << e_char4.get_key() << endl;}
+        //see if we need to do with negative key
 
         //float element
         Element<float> e_float(4.2, 7);
         if(e_float.get_key()!=7){cout << "Incorrect result from get key. Expected 7 but got : " << e_float.get_key() << endl;}
+        Element<float> e_float2(4.2, 0);
+        if(e_float2.get_key()!=0){cout << "Incorrect result from get key. Expected 7 but got : " << e_float2.get_key() << endl;}
+        Element<float> e_float3(4.2, 13);
+        if(e_float3.get_key()!=13){cout << "Incorrect result from get key. Expected 7 but got : " << e_float3.get_key() << endl;}
+        Element<float> e_float4(4.2, -6);
+        if(e_float4.get_key()!=-6){cout << "Incorrect result from get key. Expected 7 but got : " << e_float4.get_key() << endl;}
+         Element<float> e_float5(4.2, -10);
+        if(e_float5.get_key()!=-10){cout << "Incorrect result from get key. Expected 7 but got : " << e_float5.get_key() << endl;}
     
     } catch(exception& e) {
         cerr << "Error getting key from element : " << e.what() << endl;
