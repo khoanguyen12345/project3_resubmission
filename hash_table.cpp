@@ -288,9 +288,13 @@ void HashTable<T>::insert_cormen_multiplication(T data, int key) {
     }
 }
 
+//Returns a float - load factor of the hash table method is called on\
+//Preconditions - called on valid Hash Table object with non zero size
+//Postconditions - returns average load factor for hash table object
 template <class T>
 float HashTable<T>::loadFactor() {
     float ret = 0.0;
+    if (size == 0) return 0;
     for (int i = 0; i < size; i++) {
         Element<T>* curr = hashTable[i];
         while (!curr->empty) {
