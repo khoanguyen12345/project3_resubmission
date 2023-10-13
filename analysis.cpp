@@ -49,20 +49,35 @@ void test(int numbers[],int array_size){
 
 }
 
-void testSigbits(int numbers[], int arraySize) {
-    HashTable<int>* ht2 = new HashTable<int>(5);
+float testCormen(int numbers[], int arraySize) {
+    HashTable<int>* ht1 = new HashTable<int>(20);
+    for (int i = 0; i < arraySize; i++) {
+        ht1->insert_cormen_multiplication(0, numbers[i]);
+    }
+    float loadFactor = ht1->loadFactor();
+    delete ht1;
+    return loadFactor;
+}
+
+float testSigbits(int numbers[], int arraySize) {
+    HashTable<int>* ht2 = new HashTable<int>(20);
     for (int i = 0; i < arraySize; i++) {
         ht2->insert_most_significant(0, numbers[i]);
     }
-    cout << ht2->loadFactor() << " is our sig bit load factor" << endl;
+    float loadFactor = ht2->loadFactor();
+    delete ht2;
+    return loadFactor;
 }
 
-int main(){
-    srand (time(NULL));
-    int numbers[100001];
-    for(int i = 0; i <= 100000; i++){
-    numbers[i] = i* (rand() % 100 + 1 );
+int main() {
+    srand(time(NULL));
+    int numbers[100000];
+    for(int i = 0; i < 100000; i++) {
+        numbers[i] = rand();
     }
-    test(numbers,100001);
-    testSigbits(numbers, 100001);
+    cout << 1 << endl;
+    cout << testCormen(numbers,100000) << endl;
+    cout << 2 << endl;
+    cout << testSigbits(numbers, 100000) << endl;
+    return 0;
 }

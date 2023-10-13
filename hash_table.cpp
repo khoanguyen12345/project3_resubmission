@@ -234,11 +234,9 @@ int HashTable<T>::h_most_significant(int k) {
             space--;
         }
         int shifts = log2(space);
-        
         while (floor(log2(k)) + 1 >= shifts) {
             k = k >> shifts;
         }
-        cout << k << " ";
         return k;
 }
 
@@ -308,7 +306,10 @@ bool HashTable<T>::member_most_significant(T data, int key) {
 template <class T>
 int HashTable<T>::h_cormen_multiplication(int k) {
     const float A = (sqrt(5)-1)/2;
-    int m = pow(2,3);
+    int m = size;
+    while (log2(m) != floor(log2(m))) {
+        m--;
+    }
     float temp = k*A;
     int result = floor(fmod(temp,1) * m);                                 //(k*A)%1 fractional part of k*A, m is a power of 2
     return result;
@@ -358,6 +359,7 @@ float HashTable<T>::loadFactor() {
             curr = curr->next;
         }
     }
+    cout << "ret and size is " << ret << " " << size << endl;
     ret = ret/size;                                 //get the load factor
     return ret;
 }
