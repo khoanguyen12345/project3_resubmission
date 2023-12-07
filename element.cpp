@@ -60,7 +60,7 @@ Element<T>::Element(const Element<T> &copied_element) {
 // ================================================
 
 template <class T>
-Element<T>::Element(T inputData,int inputKey) { 
+Element<T>::Element(T inputData,long inputKey) { 
     empty = false;                                          //set element's state to not emppty
     prev = NULL;                                            //set previous-element pointer to NIL
     next = NULL;                                            //set next-element pointer to NIL
@@ -113,7 +113,7 @@ T Element<T>::get_data() const {
 // ================================================
 
 template <class T>
-int Element<T>::get_key() const { 
+long Element<T>::get_key() const { 
     if (empty == true){                                    //check to see if element is empty or not
         return -1;                                         //return -1 if element is empty
     }

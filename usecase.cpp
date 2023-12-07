@@ -26,20 +26,20 @@ HashTable<T>* create_table(string fname, int m) {
         getline(f, pass, '\n');
         if (user == "") continue;
         if (pass != "") pass.erase(0,1);
-        int p = 0;
+        long p = 0;
         stringstream temp;
         temp << pass;
         temp >> p;
-        ht->insert(user, ht->h(p));    
+        ht->insert_login(user, p);  
     }
     return ht;
 }
 
 template <class T>
 bool login(HashTable<T>* ht, T username, string password) {
-    int p = 0;
+    long p = 0;
     stringstream temp;
     temp << password;
-    temp >> p;
-    return ht->member(username, ht->h(p));
+    temp >> p; 
+    return ht->member_login(username, p);
 }

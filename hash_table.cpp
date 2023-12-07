@@ -13,6 +13,7 @@
 #include "element.h"
 #include <string>
 #include <math.h>
+#include <cmath>
 using namespace std;
 
 // ================================================
@@ -55,6 +56,29 @@ HashTable<T>::HashTable(int len) {
         hashTable[i] = item;                                                    //pointer at index i points to newly initilized element
     }
 }
+
+// ================================================
+// HashTable Destructor
+// Deconstruct Hash Table from memory
+// Pre-condition: Called with a positive integer len passed in as an argument
+// Post-condition: A new hash table with 'len' slots is created
+// Parameter: len - number of slots that the hash table will have
+// Return: None
+// ================================================
+
+template <class T>
+HashTable<T>::~HashTable() {
+    if (size > 0){
+        Element<T>* traversal = new Element<T>();
+        for (int i = 0; i < size; i++) {
+            traversal = hashTable[i];
+            delete traversal;                                       //pointer at index i points to newly initilized element
+        }
+        delete hashTable;
+    }
+}
+
+
 
 // ================================================
 // insert
@@ -100,7 +124,7 @@ void HashTable<T>::remove(int key) {
     int hashVal = h(key);
     if (validIndex(hashVal) && hashTable[hashVal]->empty != true) {
         Element<T>* tempNode = hashTable[hashVal];
-        while (tempNode->key != key){
+        while (tempNode->get_key() != key){
             if (tempNode->next == nullptr){
                 return;
             }
@@ -160,7 +184,7 @@ bool HashTable<T>::member(T data, int key) {
     if (validIndex(hashVal)) {
         Element<T>* curr = hashTable[hashVal];
         while (!curr->empty) {
-            if (curr->data == data && curr->key == key) {
+            if (curr->data == data && curr->get_key() == key) {
                 ret = true;
                 break;
             }
@@ -182,7 +206,7 @@ bool HashTable<T>::member(T data, int key) {
 template <class T>
 int HashTable<T>::h(int k) {
     if (size == 0) {                                //check if hash table is empty
-        return -1;                                  //if empty then return -1
+        return -1;                                   //if empty then return -1
     }
     else {
         return k%size;                             //return hash value of key k
@@ -284,7 +308,7 @@ bool HashTable<T>::member_most_significant(T data, int key) {
     if (validIndex(hashVal)) {
         Element<T>* curr = hashTable[hashVal];
         while (!curr->empty) {
-            if (curr->data == data && curr->key == key) {
+            if (curr->data == data && curr->get_key() == key) {
                 ret = true;
                 break;
             }
@@ -362,4 +386,76 @@ float HashTable<T>::loadFactor() {
     cout << "ret and size is " << ret << " " << size << endl;
     ret = ret/size;                                 //get the load factor
     return ret;
+}
+
+// ================================================
+// h_login
+// Set hash value of key k (used exclusively for usecase)
+// Pre-condition: Exist a hash table with key at index k
+// Post-condition: Return the hash value of key k
+// Parameter: long k - a key value
+// Return: Return the hash value of key k
+// ================================================
+template <class T>
+int HashTable<T>::h_login(long k) {
+    if (size == 0) {                                //check if hash table is empty
+        return -1;                                  //if empty then return -1
+    }
+    else {
+        return fmod(k,size);                        //fmod is long's version of modulus
+    }
+}
+
+// ================================================
+// member_login
+// Check if an element is in the hash table (used exclusively for usecase)
+// Pre-condition: Exists a hash table
+// Post-condition: Return true if element to be
+//                 check is in the hash table
+//                 Else return false
+// Parameter: T data - targeted element's data
+//            long key - targeted element's key value
+// Return: true if targeted element is in
+//         the hash table, false otherwise
+// ================================================
+template <class T>
+bool HashTable<T>::member_login(T data, long key) {
+    int hashVal = h_login(key);
+    bool ret = false;
+    if (validIndex(hashVal)) {
+        Element<T>* curr = hashTable[hashVal];
+        while (!curr->empty) {
+            if (curr->data != data) {
+                curr = curr->next;
+            }else{
+                ret = true;
+                break;
+            }
+            
+        }
+    }
+    return ret;
+}
+
+// ================================================
+// insert
+// Insert an element into the Hash Table and hide key (used exclusively for usecase)
+// Pre-condition: Exists a HashTable; 
+//                element must have key that is in range 
+//                of the Hash Table
+// Post-condition: HashTable contains the new element, key of element inserted is -2
+// Parameter: T data - the data of element to be inserted
+//            int key - the key value of element to be inserted
+// Return: None
+// ================================================
+template <class T>
+void HashTable<T>::insert_login(T data, long key) {
+    int hashVal =  h_login(key);                               //get hash value of key 'key'   
+    if (validIndex(hashVal)) {                          //check if the key is valid or not, if not then do nothing, else proceed
+        Element<T>* node = new Element<T>(data, -2);   //pointer points to a new element containing inputted data and key value (this value is -2 because get_key returns -1 when data does not exist and I don't want anything to interfere)
+        node->next = hashTable[hashVal];                //add the new element to the start of the linked list, connect with the previous first element
+        node->prev = nullptr;                           //set new element's previous pointer to nil
+        hashTable[hashVal]->prev = node;                //previous first element's prev pointer points to newly inserted element
+        hashTable[hashVal] = node;                      //set the hash table's index at hashVal to point to the new element
+    }
 }

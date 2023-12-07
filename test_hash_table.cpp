@@ -438,7 +438,7 @@ void test_remove() {
         }
         ht_char.insert('c', 0);
         ht_char.insert('c', 4);
-        ht_char.remove(4); //removing at tail and removing if there is a duplicate value
+        ht_char.remove(4); //removing at tail and removing if there is a duplicate value 
         if(ht_char.to_string()!="0: (c,0) \n1: \n2: \n3: \n4: \n") {
             cout << "Incorrect result of removing non-member from table. Expected\n\n0: (10,4) \n1: \n2: \n3: \n4: \n\nBut got\n\n" << ht_char.to_string() << endl;
         }
@@ -593,10 +593,15 @@ void test_member() {
 
 void test_login() {
     try {
-        HashTable<string>* ht = create_table<string>("logins.csv", 10);
+        HashTable<string>* ht = create_table<string>("logins.csv", 100);
         string username = "IEv";
         string password = "7170790290";
         if(!login(ht, username, password)){cout << "Incorrect result validating accurate login information" << endl;}
+        username = "s1kfKvslx";
+        password = "7690015703";
+        if(!login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+
+
         username = "bad-user";
         password = "98213873";
         if(login(ht, username, password)){cout << "Incorrect result validating inaccurate login information" << endl;}
@@ -608,7 +613,186 @@ void test_login() {
         if(login(ht , username, password)){cout << "Incorrect result validating blank username information" << endl;}
         username = "ee";
         password = "";
+        
         if(login(ht, username, password)){cout << "Incorrect result validating blank password information" << endl;}
+        
+        username = "s1kfKvslx";
+        password = "7690015713";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+
+        username = "cJHFnXn36";
+        password = "7478679477";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        
+        username = "qc6dfWvRvgu";
+        password = "6965995485";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "s1kfKvslx"; password = "7690015713";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "cJHFnXn36"; password = "7478679477";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "qc6dfWvRvgu"; password = "6965995485";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "lhpjg2B2DDP"; password = "7342900205";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "nNM3zV0GJ"; password = "6511542107";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "4tN5Po"; password = "5165222623";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "uTB8K2TAd8"; password = "8234999804";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "bwOzQh5t"; password = "6979625236";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "hFw624XiN4W"; password = "5169718097";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "1Pe2dZ3"; password = "2214356474";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "yS00dMYuun0jKd"; password = "5079668917";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "Mv2xeE12L"; password = "4438770140";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "LH0Xn"; password = "9617014672";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "Cj5x"; password = "5180046544"; 
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "AwX13S"; password = "7660874046";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "mSNCKsbTrpw"; password = "6230472762";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "ZErrhfflNrNRASm"; password = "6586153866";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "SczVRRv"; password = "6787783743";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "IEv"; password = "7170790300";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "WsGjqsCilXVH"; password = "9370840789";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "toQlXVA"; password = "9605580334";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "mPih2wydYWBuDCP"; password = "3371370249";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "q8hHS"; password = "5257862394";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "n"; password = "2564902677";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "59lwwqgro"; password = "3176209020";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "dY52bhGQRNbO0"; password = "7263256693";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "C2ZUwTpRkM9zPl"; password = "3552528931";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "07o6Lr"; password = "9537427806";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "jNCWV7mSxjvT"; password = "7155161662";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "W"; password = "9748149929";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "g"; password = "9232448707";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "9ks4Wa7nV"; password = "5761741533";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "7OZXHC7JU"; password = "4624447258";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "s"; password = "8843292989";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "eIzrsd0FWgcdU"; password = "2760428349";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "8QTZd"; password = "9230793069";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "sKMkmaYs"; password = "6989469104";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "AZKWiUIHDevTPeZ"; password = "5492683923";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "zOWBzgozg9"; password = "3093377956";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "pyyIIf"; password = "4600227354";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "5IpjKLKDQbtwRg"; password = "9597435311";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "xURxOWY"; password = "7315375906";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "GscqfBj8oIoE"; password = "5391132802";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "XrpEaphIX"; password = "2174229461";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "pv9gtUYl9OKDU"; password = "8760475009";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "mugwd"; password = "4380132121";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "LTOgdgn"; password = "6656062856";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "E"; password = "5688553483";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "gxwhlBARCmQgd"; password = "8483498152";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "NNvOm"; password = "4105831840";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "BgejXjSqVJ6"; password = "8828756947";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "tlGGyv"; password = "8535448282";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "O"; password = "3898550497";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "QO5KRV5zdE"; password = "9362430563";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "C4ZE0r"; password = "9778206123";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "cB7Xyh91Kdt7hsN"; password = "6624128764";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "gdvl"; password = "9226432425";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "3"; password = "2914362267";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "VDq"; password = "9343472312";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "c"; password = "6068511657";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "sUo0E5DSHP"; password = "9053021213";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "EDQ4"; password = "8167812437";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "knP0fhIanZghnc"; password = "8794462919";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "tuQr"; password = "7229117661";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "197G"; password = "8245104312";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "bmDRTGayHfJJf6"; password = "7423032787";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "kCN"; password = "6761308237";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "S"; password = "3760879327";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "yrgQyB4gfH"; password = "8174070546";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "yMGhz9p1RMBq"; password = "3301131128";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "zkzOEvm"; password = "6589598317";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "I6BAg94YifU"; password = "4006263067";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "7dr9hr"; password = "8123855994";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "yK4I"; password = "6872589665";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "b"; password = "4834607750";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "4wYuAHtWoAOY07"; password = "5029518069";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "F5pnKcbSQ"; password = "8871447005";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "ySvcyuk"; password = "3100098483";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "IRQ5jFJRtdvCINa"; password = "5988504107";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "Z698MfU3O176gQg"; password = "3677362450";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "Gp"; password = "5065068727";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+        username = "81Sd3N"; password = "4642137833";
+        if(login(ht, username, password)){cout << "Incorrect result validating username: " << username << " password: " << password << endl;}
+
+
     } catch(exception& e) {
         cerr << "Error in accomplishing login validation : " << e.what() << endl;
     }

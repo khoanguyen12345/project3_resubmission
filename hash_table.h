@@ -16,12 +16,17 @@ class HashTable
 {                 
     public:
         HashTable();                                                            //default constructor
-        HashTable(int len);                                                     //constructor initialize hash table with 'len' slots
-        void insert(T data, int key);                                           //insert element
+        HashTable(int len);       
+        ~HashTable();                                                           //constructor initialize hash table with 'len' slots
+        
+        void insert(T data, int key); 
+        void insert_login(T data, long key);                                           //insert element
         void remove(int key);                                                   //remove element
         bool validIndex(int i);                                                 //check if index is within the hash table
         bool member(T data, int key);                                           //check if element is in the hash table
-        int h(int k);                                                           //hash function
+        bool member_login(T data, long key);
+        int h(int k);  
+        int h_login(long k);                                                           //hash function
         
         int h_most_significant(int k);                                          
         void insert_most_significant(T data, int key);                          //convert data into string
@@ -33,7 +38,8 @@ class HashTable
         string to_string();                                                     //convert data into string
 
         float loadFactor();
-
-        Element<T>** hashTable;
         int size;
-};
+
+    private:
+        Element<T>** hashTable;
+}; 
